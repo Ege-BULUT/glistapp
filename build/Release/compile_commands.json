@@ -1,0 +1,237 @@
+[
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\gcc.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_C.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\lib\\sqlite3.c.obj -c C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\lib\\sqlite3.c",
+  "file": "C:/dev/glist/zbin/glistzbin-win64/mingw64/lib/sqlite3.c"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\types\\gColor.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\types\\gColor.cpp",
+  "file": "C:/dev/glist/glistengine/engine/types/gColor.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\utils\\gThread.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\utils\\gThread.cpp",
+  "file": "C:/dev/glist/glistengine/engine/utils/gThread.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\utils\\gUtils.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\utils\\gUtils.cpp",
+  "file": "C:/dev/glist/glistengine/engine/utils/gUtils.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\utils\\gFile.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\utils\\gFile.cpp",
+  "file": "C:/dev/glist/glistengine/engine/utils/gFile.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gShader.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gShader.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gShader.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\core\\gObject.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\core\\gObject.cpp",
+  "file": "C:/dev/glist/glistengine/engine/core/gObject.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\core\\gRenderer.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\core\\gRenderer.cpp",
+  "file": "C:/dev/glist/glistengine/engine/core/gRenderer.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\core\\gRenderObject.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\core\\gRenderObject.cpp",
+  "file": "C:/dev/glist/glistengine/engine/core/gRenderObject.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gTexture.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gTexture.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gTexture.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gImage.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gImage.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gImage.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gSkybox.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gSkybox.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gSkybox.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gNode.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gNode.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gNode.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gLight.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gLight.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gLight.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gShadowMap.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gShadowMap.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gShadowMap.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gCamera.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gCamera.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gCamera.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gFont.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gFont.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gFont.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gMaterial.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gMaterial.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gMaterial.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gMesh.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gMesh.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gMesh.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gSkinnedMesh.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gSkinnedMesh.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gSkinnedMesh.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gModel.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gModel.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gModel.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\utils\\gDatabase.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\utils\\gDatabase.cpp",
+  "file": "C:/dev/glist/glistengine/engine/utils/gDatabase.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\utils\\gAssetLoader.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\utils\\gAssetLoader.cpp",
+  "file": "C:/dev/glist/glistengine/engine/utils/gAssetLoader.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\primitives\\gLine.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\primitives\\gLine.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/primitives/gLine.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\primitives\\gPlane.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\primitives\\gPlane.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/primitives/gPlane.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\primitives\\gBox.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\primitives\\gBox.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/primitives/gBox.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\primitives\\gSphere.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\primitives\\gSphere.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/primitives/gSphere.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gVbo.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gVbo.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gVbo.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gFbo.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gFbo.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gFbo.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gRay.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gRay.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gRay.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gBoundingBox.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gBoundingBox.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gBoundingBox.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\graphics\\gRect.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\graphics\\gRect.cpp",
+  "file": "C:/dev/glist/glistengine/engine/graphics/gRect.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\core\\gAppObject.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\core\\gAppObject.cpp",
+  "file": "C:/dev/glist/glistengine/engine/core/gAppObject.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\base\\gBasePlugin.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\base\\gBasePlugin.cpp",
+  "file": "C:/dev/glist/glistengine/engine/base/gBasePlugin.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\media\\gBaseSound.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\media\\gBaseSound.cpp",
+  "file": "C:/dev/glist/glistengine/engine/media/gBaseSound.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\media\\gFmodSound.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\media\\gFmodSound.cpp",
+  "file": "C:/dev/glist/glistengine/engine/media/gFmodSound.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\base\\gBaseApp.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\base\\gBaseApp.cpp",
+  "file": "C:/dev/glist/glistengine/engine/base/gBaseApp.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\base\\gBaseCanvas.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\base\\gBaseCanvas.cpp",
+  "file": "C:/dev/glist/glistengine/engine/base/gBaseCanvas.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\core\\gBaseWindow.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\core\\gBaseWindow.cpp",
+  "file": "C:/dev/glist/glistengine/engine/core/gBaseWindow.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\core\\gCanvasManager.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\core\\gCanvasManager.cpp",
+  "file": "C:/dev/glist/glistengine/engine/core/gCanvasManager.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\core\\gAppManager.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\core\\gAppManager.cpp",
+  "file": "C:/dev/glist/glistengine/engine/core/gAppManager.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\core\\backward.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\core\\backward.cpp",
+  "file": "C:/dev/glist/glistengine/engine/core/backward.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe -DGlistEngine_EXPORTS @CMakeFiles/GlistEngine.dir/includes_CXX.rsp  -o CMakeFiles\\GlistEngine.dir\\C_\\dev\\glist\\glistengine\\engine\\core\\gGLFWWindow.cpp.obj -c C:\\dev\\glist\\glistengine\\engine\\core\\gGLFWWindow.cpp",
+  "file": "C:/dev/glist/glistengine/engine/core/gGLFWWindow.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe  @CMakeFiles/GlistApp.dir/includes_CXX.rsp  -o CMakeFiles\\GlistApp.dir\\src\\main.cpp.obj -c C:\\dev\\glist\\myglistapps\\glistapp\\src\\main.cpp",
+  "file": "C:/dev/glist/myglistapps/glistapp/src/main.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe  @CMakeFiles/GlistApp.dir/includes_CXX.rsp  -o CMakeFiles\\GlistApp.dir\\src\\gApp.cpp.obj -c C:\\dev\\glist\\myglistapps\\glistapp\\src\\gApp.cpp",
+  "file": "C:/dev/glist/myglistapps/glistapp/src/gApp.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe  @CMakeFiles/GlistApp.dir/includes_CXX.rsp  -o CMakeFiles\\GlistApp.dir\\src\\GameCanvas.cpp.obj -c C:\\dev\\glist\\myglistapps\\glistapp\\src\\GameCanvas.cpp",
+  "file": "C:/dev/glist/myglistapps/glistapp/src/GameCanvas.cpp"
+},
+{
+  "directory": "C:/dev/glist/myglistapps/glistapp/build/Release",
+  "command": "C:\\dev\\glist\\zbin\\glistzbin-win64\\mingw64\\bin\\g++.exe  @CMakeFiles/GlistApp.dir/includes_CXX.rsp  -o CMakeFiles\\GlistApp.dir\\src\\MainMenu.cpp.obj -c C:\\dev\\glist\\myglistapps\\glistapp\\src\\MainMenu.cpp",
+  "file": "C:/dev/glist/myglistapps/glistapp/src/MainMenu.cpp"
+}
+]
