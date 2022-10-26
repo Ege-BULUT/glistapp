@@ -1,0 +1,73 @@
+Server - Client iletişimi
+
+
+
+Server tarafından 
+
+-> SEND ->
+	
+	Paket yapısı : 
+		[Protokol No] [    Bilgi    ]
+		|Fixed Len. | |Variable Len.|
+
+<- RECV <-
+	Paket yapısı :
+		[Protokol No] [    Bilgi   ]
+		|Fixed Len. | | Fixed Len. |
+
+
+Server -> Client
+-SEND ÖRNEĞİ-
+
+
+[0 : System Info]
+[000]	[{Giriş Başarısız + Hata Kodu}]
+[001]	[{Giriş Başarılı}]
+[002]	[{yourPlayerIndex}]
+[003] 	[{Bozuk paket aldım/Algılayamadım}]
+[004] 	[{TAMAM}]
+
+
+[1 : Your Player's Info]
+[100]	[{characters[yourPlayerIndex][]}]
+[101]	[{characterEquipped[yourPlayerIndex][]}]
+[102]	[{characterInventory[]}]
+
+
+[2 : Other Player's Info]
+[200]	[{characters[otherPlayerIndex][]}]
+[201]	[{characterEquipped[otherPlayerIndex][]}]
+[202]	[{characterInventory[]}] // Bence bunu yapmayalım. 
+
+[3 : MAP & NPC Info]
+[300]	 -
+[301]	 -
+[302]	[{shopInventories[shopIndex][ITEMS]}]
+
+
+Server -> Client
+-RECV ÖRNEĞİ-
+
+
+[0 : System Info]
+[000]	[{Giriş Başarısız + Sunucuya bagliyim(ok) }]
+[001]	[{Giriş Başarılı + id}] //belki mt2 tarzında aynı hesaba 1'den fazla karakter açılırsa karkaterID de gönderilir
+[002]	[{PlayerIndex'imi aldım + PlayerIndex}]
+[003] 	[{Bozuk paket aldım/Algılayamadım}]
+[004] 	[{TAMAM}]
+
+[1 : Your Player's Info]
+[100]	[{characters[yourPlayerIndex][]}]
+[101]	[{characterEquipped[yourPlayerIndex][]}]
+[102]	[{characterInventory[]}]
+
+[2 : Other Player's Info]
+[200]	[{characters[otherPlayerIndex][]}]
+[201]	[{characterEquipped[otherPlayerIndex][]}]
+[202]	[{characterInventory[]}] // Bence bunu yapmayalım. 
+
+[3 : MAP & NPC Info]
+[300]	 -
+[301]	 -
+[302]	[{shopInventories[shopIndex][ITEMS]}]
+

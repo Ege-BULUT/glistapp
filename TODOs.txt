@@ -1,0 +1,73 @@
+
+
+TODOs
+
+
+EGE
+	-	CREATE	: 	PLAYER SYSTEM
+					|__-[Race System] -[Stat system]
+
+	-	CREATE	: 	MOVEMENT SYSTEM
+
+	-	CREATE	: 	CAMERA SYSTEM
+
+	-	CREATE	:	DATABASE SYSTEM (SQL)
+
+	-	CREATE	: 	DATABASE CONNECTION (C++)
+
+	-	CREATE	: 	COLLISION DETECTION
+
+	-	CREATE	: 	INTERACTION SYSTEM
+
+	-	CREATE	: 	BUILDING INTERIORS
+
+	-	CREATE	:	NPCs	
+
+	-	CREATE	:
+
+
+SİNEM
+	-	DESIGN	:	Character Creation Screen
+					|__-[Race Selection] -[Stat Screen]
+
+	-	DESIGN	:	NPC Interaction Menu
+
+	-	DESIGN	:	Shop Screen
+
+	-	DESIGN	:	Inventory Screen
+
+	-	DESIGN	:	Stats Screen
+
+	-	DESIGN	:	Map Props
+					|__ -[Rocks] 	-[Paper Trees]  -[Scissors grasses] 
+					|__ -[Prop buildings] 	-[Prop statues etc.]
+	-	DESIGN	:	
+
+	-	DESIGN	:	
+
+	-	DESIGN	:	
+
+
+ERDOĞAN
+	-	ADD		:	Character Creation Screen
+					|__1.[Race Selection] |__2.[Stat Screen]
+
+	-	ADD		:	NPC Interaction Menu
+
+	-	ADD		:	Shop Screen
+
+	-	ADD		:	Inventory Screen
+
+	-	ADD		:	Stats Screen
+
+	-	ADD		:	Map Props
+					|__ -[Rocks] 	-[Paper Trees]  -[Scissors grasses] 
+					|__ -[Prop buildings] 	-[Prop statues etc.]
+	-	ADD		:	
+
+	-	ADD		:	
+
+	-	ADD		:	
+
+
+

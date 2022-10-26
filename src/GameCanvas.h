@@ -42,10 +42,16 @@ public:
 	void initilaize();
 
 private:
+	bool DEBUG;
+	static const int KEY_W = 2, KEY_A = 4, KEY_S = 8, KEY_D = 16;
 
+	static const int ROCK = 0, PAPER = 1, SCISSORS = 2;
 	static const int MENU = -1, LOADING = 0, PLAYING = 1, PAUSED = 2, LOADSAVE = 3;
 	static const int font_LOAD1 = 0, font_LOAD2 = 1, font_BUTTON = 2, font_INGAME = 3;
 
+	static const int characterframeNum = 3;
+	int characterframecounter, characterframeno;
+	int characterframecounterlimit, characterframenum;
 	//props
 	static const int SPAWN_POINT = 0;
 
@@ -55,8 +61,10 @@ private:
 	//bu sayýlarý database'e ekle oradan çek
 	static const int btnAmount = 4, propAmount = 1, buildingAmount = 2, NPCAmount = 2;
 	static const int maxInteriorAmount = 1;
+
 	int interiorAmounts[buildingAmount]; //her bina için o binanýn kaç iç odasý varsa ayrý ayrý tut.
 	int buttonPressed;
+
 	void createButton(std::string btntext, int btnx = 0, int btny = 0, int btntype = 0, int btnR = 255, int btnG = 255, int btnB = 255, int texttype = 0);
 	void drawButton(std::string btntext, int btnx = 0, int btny = 0, int btntype = 0, int btnR = 255, int btnG = 255, int btnB = 255, int texttype = 0); //0 -> default(15) | 1 -> savefont(12)
 	void drawButtons();
@@ -81,6 +89,10 @@ private:
 	void drawCharacter();
 	void drawMapFG();
 	void drawGUI();
+	bool checkCollision(int xLeft1, int yUp1, int xRight1, int yBottom1, int xLeft2, int yUp2, int xRight2, int yBottom2);
+
+	void updateCharacter();
+	void updateCamera();
 
 	gApp* root;
 
@@ -94,6 +106,41 @@ private:
 	gImage img_buildings[buildingAmount];
 	gImage img_interior[buildingAmount][maxInteriorAmount]; //[buildingAmount][max(interiorAmounts)]
 	gImage img_NPCs[NPCAmount];
+
+	gImage img_characterBases[3];
+	std::vector<std::vector<gImage>> img_characters;
+	// img_Characters[characterIndex(ci)][ITEM_INDEX]
+	// 2nd Array: [img_base..., img_armor, img_helmet, img_weapon, img_effect]
+	//           [ci][0]      [ci][1]    [ci][2]     [ci][3]     [ci][4]
+	//total character amount on the current map;
+
+	static const int CBASE = 0, ARMOR = 1, HELMET = 2, WEAPON = 3, EFFECT = 4;
+	std::vector<std::vector<std::vector<gImage>>> img_equipables;
+	/*
+	 *img_equipables[RACE][TYPE][INDEX]
+	 *img_equipables[STONE][ARMOR][3]
+	 *img_equipables[PAPER][WEAPON][6]
+	 *img_equipables[EFFECT][TYPE][Index]
+	 */
+	int playerIndex; //Sunucudan al bunu ilerde
+	int totalCharacterAmount;
+	/* All Characters on the current map */
+	std::vector<std::vector<int>> characters;
+	//[index, cx, cy, crot, animationFrameNo, race, level, [stats]]
+	// 0      1   2   3     4                 5     6      7,8...
+
+	/* Character Inventory */
+	std::vector<int> characterInventory;
+	//[CharacterIndex, TotalItemAmount, Total Coin, [Items]]
+
+	std::vector<std::vector<int>> characterEquipped;
+	// 1st Array: characterIndex;
+	// 2nd Array: [i_base..., i_armor, i_helmet, i_weapon, i_effect] (i:index)
+	// 		      [0]        [1]      [2]       [3]       [4]
+
+
+	std::vector<std::vector<int>> shopInventories;
+	//[ShopIndex, TotalItemAmount, Total Coin, [Items]]
 
 	int propXs[propAmount];
 	int propYs[propAmount];
@@ -114,9 +161,19 @@ private:
 
 	////////////////////////////////////
 
-	int camx, camy, zoom;
-	int cx, cy, crot, cdx, cdy;
-
+	float cx, cy;
+	int crot; //character rotation
+	float mrot; //mouse rotation
+	int keystate;
+	float cdx, cdy;
+	float cspeed;
+	float camx, camy, zoom;
+	float camx1, camy1;
+	float camx2, camy2;
+	float mousex, mousey;
+	float clickx, clicky;
+	bool  mouseHold;
+	float mouseHoldedFor_frames, mouseHoldedFor_seconds;
 };
 
 #endif /* GAMECANVAS_H_ */

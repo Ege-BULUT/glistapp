@@ -12,12 +12,6 @@ gAppObject.h
 gAppManager.h
 ../../../../glistengine/engine/base/gAppManager.h
 
-../../../../glistengine/engine/base/gBaseCanvas.h
-gBaseApp.h
-../../../../glistengine/engine/base/gBaseApp.h
-gRenderObject.h
-../../../../glistengine/engine/base/gRenderObject.h
-
 ../../../../glistengine/engine/core/gAppManager.h
 gObject.h
 ../../../../glistengine/engine/core/gObject.h
@@ -27,6 +21,16 @@ chrono
 -
 
 ../../../../glistengine/engine/core/gAppObject.h
+gObject.h
+../../../../glistengine/engine/core/gObject.h
+
+../../../../glistengine/engine/core/gBaseWindow.h
+iostream
+-
+unistd.h
+-
+signal.h
+-
 gObject.h
 ../../../../glistengine/engine/core/gObject.h
 
@@ -1596,46 +1600,6 @@ detail/setup.hpp
 detail/func_vector_relational.inl
 ../../../../zbin/glistzbin-win64/mingw64/include/glm/detail/func_vector_relational.inl
 
-C:/dev/glist/myglistapps/glistapp/src/GameCanvas.cpp
-GameCanvas.h
-C:/dev/glist/myglistapps/glistapp/src/GameCanvas.h
-MainMenu.h
-C:/dev/glist/myglistapps/glistapp/src/MainMenu.h
-
-C:/dev/glist/myglistapps/glistapp/src/GameCanvas.h
-gBaseCanvas.h
-C:/dev/glist/myglistapps/glistapp/src/gBaseCanvas.h
-gApp.h
-C:/dev/glist/myglistapps/glistapp/src/gApp.h
-gImage.h
-C:/dev/glist/myglistapps/glistapp/src/gImage.h
-gFont.h
-C:/dev/glist/myglistapps/glistapp/src/gFont.h
-
-C:/dev/glist/myglistapps/glistapp/src/MainMenu.cpp
-gApp.h
-C:/dev/glist/myglistapps/glistapp/src/gApp.h
-MainMenu.h
-C:/dev/glist/myglistapps/glistapp/src/MainMenu.h
-GameCanvas.h
-C:/dev/glist/myglistapps/glistapp/src/GameCanvas.h
-gBaseApp.h
-C:/dev/glist/myglistapps/glistapp/src/gBaseApp.h
-
-C:/dev/glist/myglistapps/glistapp/src/MainMenu.h
-gBaseCanvas.h
-C:/dev/glist/myglistapps/glistapp/src/gBaseCanvas.h
-GameCanvas.h
-C:/dev/glist/myglistapps/glistapp/src/GameCanvas.h
-gApp.h
-C:/dev/glist/myglistapps/glistapp/src/gApp.h
-gImage.h
-C:/dev/glist/myglistapps/glistapp/src/gImage.h
-gFont.h
-C:/dev/glist/myglistapps/glistapp/src/gFont.h
-gBaseApp.h
-C:/dev/glist/myglistapps/glistapp/src/gBaseApp.h
-
 C:/dev/glist/myglistapps/glistapp/src/gApp.h
 gBaseApp.h
 C:/dev/glist/myglistapps/glistapp/src/gBaseApp.h
@@ -1643,4 +1607,12 @@ gImage.h
 C:/dev/glist/myglistapps/glistapp/src/gImage.h
 gFont.h
 C:/dev/glist/myglistapps/glistapp/src/gFont.h
+
+C:/dev/glist/myglistapps/glistapp/src/main.cpp
+gAppManager.h
+C:/dev/glist/myglistapps/glistapp/src/gAppManager.h
+gBaseWindow.h
+C:/dev/glist/myglistapps/glistapp/src/gBaseWindow.h
+gApp.h
+C:/dev/glist/myglistapps/glistapp/src/gApp.h
 

@@ -283,10 +283,12 @@ void MainMenu::savesMenu() {
 
 void MainMenu::keyPressed(int key) {
 //	gLogi("GameCanvas") << "keyPressed:" << key;
+
 }
 
 void MainMenu::keyReleased(int key) {
 //	gLogi("GameCanvas") << "keyReleased:" << key;
+
 }
 
 void MainMenu::charPressed(unsigned int codepoint) {
