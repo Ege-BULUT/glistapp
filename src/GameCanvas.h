@@ -43,40 +43,62 @@ public:
 
 private:
 	bool DEBUG;
-	static const int KEY_W = 2, KEY_A = 4, KEY_S = 8, KEY_D = 16;
 
-	static const int ROCK = 0, PAPER = 1, SCISSORS = 2;
+	static const int KEY_W = 2, KEY_A = 4, KEY_S = 8, KEY_D = 16;
 	static const int MENU = -1, LOADING = 0, PLAYING = 1, PAUSED = 2, LOADSAVE = 3;
+	static const int IN_MAP = 0, IN_BUILDING = 1;
 	static const int font_LOAD1 = 0, font_LOAD2 = 1, font_BUTTON = 2, font_INGAME = 3;
 
-	static const int characterframeNum = 3;
-	int characterframecounter, characterframeno;
-	int characterframecounterlimit, characterframenum;
+	//races
+	//static const int ROCK = 0, PAPER = 1, SCISSORS = 2;
+	int ROCK = 0, PAPER = 1, SCISSORS = 2;
+
 	//props
 	static const int SPAWN_POINT = 0;
 
 	//buildings
-	static const int SHOP_POTION = 0, SHOP_ARMORY = 1;
+	//static const int SHOP_POTION = 0, SHOP_ARMORY = 1;
+	int SHOP_ARMORY = 0, SHOP_POTION = 1;
 
-	//bu sayýlarý database'e ekle oradan çek
-	static const int btnAmount = 4, propAmount = 1, buildingAmount = 2, NPCAmount = 2;
-	static const int maxInteriorAmount = 1;
-
+	static const int propAmount = 1, buildingAmount = 2, NPCAmount = 2;
 	int interiorAmounts[buildingAmount]; //her bina için o binanýn kaç iç odasý varsa ayrý ayrý tut.
-	int buttonPressed;
+	static const int maxInteriorAmount = 1;
+	void createBuilding(int index, int index_outerImg, float x, float y, std::string innerinfos);
+	void drawBuildings();
+	int buildingPressed;
+	std::vector<std::vector<std::string>> buildings;
+	std::vector<int> currentInterior;
+	/* Building Structure :
+	 * [index, index_outerimg, x, y, innerinfo1, innerinfo2, innerinfo...]
+	 * (innerinfo0 : index_interiorImg)
+	 * (innerinfo1 : index_NPC)
+	 * (innerinfo2 : index_NPCx)
+	 * (innerinfo3 : index_NPCy)
+	 * (innerinfo4 : prop_amount) //prop amount in this interior
+	 * (innerinfo5+: [prop_index1, x1, y1], [prop_index2, x2, y2]...
+	 */
 
+
+	//animation
+	static const int characterframeNum = 3;
+	int characterframecounter, characterframeno;
+	int characterframecounterlimit, characterframenum;
+
+	//buttons
+	static const int btnAmount = 4;
 	void createButton(std::string btntext, int btnx = 0, int btny = 0, int btntype = 0, int btnR = 255, int btnG = 255, int btnB = 255, int texttype = 0);
 	void drawButton(std::string btntext, int btnx = 0, int btny = 0, int btntype = 0, int btnR = 255, int btnG = 255, int btnB = 255, int texttype = 0); //0 -> default(15) | 1 -> savefont(12)
 	void drawButtons();
-	void listenButtons();
+	int buttonPressed;
 	gFont buttontext;
-
+	std::vector<std::string> buttonTexts;
+	std::vector<std::vector<int>> buttons;
 	//[
 	// [x, y, btntype, R, G, B, textype, x2, y2]
 	////0, 1, 2,       3, 4, 4, 6,       7,  8 ]
 	//]
-	std::vector<std::vector<int>> buttons;
-	std::vector<std::string> buttonTexts;
+
+	void listener(); //button & building & npc vs clicklerini dinlemek için
 
 	void updateLoad(int index);
 	void drawLoad();
@@ -84,6 +106,7 @@ private:
 	void setInitialVariables();
 
 	void drawGame();
+	void updateMap();
 	void drawMapBG();
 	void drawMid();
 	void drawCharacter();
@@ -96,6 +119,7 @@ private:
 
 	gApp* root;
 
+	/* gImages */
 	gImage img_background;
 	gImage img_blueprint;
 	gImage img_menu;
@@ -114,7 +138,9 @@ private:
 	//           [ci][0]      [ci][1]    [ci][2]     [ci][3]     [ci][4]
 	//total character amount on the current map;
 
-	static const int CBASE = 0, ARMOR = 1, HELMET = 2, WEAPON = 3, EFFECT = 4;
+	//static const int CBASE = 0, ARMOR = 1, HELMET = 2, WEAPON = 3, EFFECT = 4;
+	int CBASE = 0, ARMOR = 1, HELMET = 2, WEAPON = 3, EFFECT = 4;
+	gImage tmpimg;
 	std::vector<std::vector<std::vector<gImage>>> img_equipables;
 	/*
 	 *img_equipables[RACE][TYPE][INDEX]
@@ -131,8 +157,9 @@ private:
 
 	/* Character Inventory */
 	std::vector<int> characterInventory;
-	//[CharacterIndex, TotalItemAmount, Total Coin, [Items]]
-
+	/*[CharacterIndex, TotalItemAmount, Total Coin, [Items]]
+	 *[Items] : {Item_index, Amount}
+	*/
 	std::vector<std::vector<int>> characterEquipped;
 	// 1st Array: characterIndex;
 	// 2nd Array: [i_base..., i_armor, i_helmet, i_weapon, i_effect] (i:index)
@@ -151,7 +178,8 @@ private:
 	std::vector<int> fontsizes;
 	std::vector<std::string> loadingtext;
 
-	int status;
+	int game_status;
+	int game_map;
 	int loadindex;
 
 	float globalscale;

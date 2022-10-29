@@ -21,7 +21,7 @@
 
 
 int main(int argc, char **argv) {
-	gStartEngine(new gApp(), "(R)ock(P)aper(S)cissors RPG", gBaseWindow::WINDOWMODE_APP, 1280, 720);
+	gStartEngine(new gApp(), "(R)ock(P)aper(S)cissors RPG", gBaseWindow::WINDOWMODE_APP, 1600, 900);
 	//gStartEngine(new gApp(), "Rock Paper Scissors RPG", gBaseWindow::WINDOWMODE_APP, 1920, 1080);
 	//gStartEngine(app, appName, windowMode, xSize, ySize)
 	return 0;

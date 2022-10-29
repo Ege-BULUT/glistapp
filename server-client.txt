@@ -43,6 +43,10 @@ Server -> Client
 [300]	 -
 [301]	 -
 [302]	[{shopInventories[shopIndex][ITEMS]}]
+[303]	[{Purchase Failed}]
+[304]	[{Purchase Succeed + Item[]}]
+[305] 	[{Sell Failed}]
+[306]	[{Sell Succeed + coin}]
 
 
 Server -> Client
@@ -70,4 +74,7 @@ Server -> Client
 [300]	 -
 [301]	 -
 [302]	[{shopInventories[shopIndex][ITEMS]}]
-
+[303]	[{Purchase Failed - ok}]
+[304]	[{Purchase Succeed - ok}]
+[305] 	[{Sell Failed - ok}]
+[306]	[{Sell Succeed - ok}]

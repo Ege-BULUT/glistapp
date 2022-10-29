@@ -93,8 +93,8 @@ void MainMenu::updateLoad(int index) {
 		loadingtext[1] += "game/map.png";
 		break;
 	case 4:
-
-		loadingtext[1] += "";
+		img_statue.loadImage("game/props/prop_townstatue.png");
+		loadingtext[1] += "game/props/prop_townstatue.png";
 		break;
 	case 5:
 
@@ -134,6 +134,10 @@ void MainMenu::setInitialVariables() {
 	x_btnmm = x_mainmenu + ((img_menu.getWidth() * globalscale) - (img_button[1].getWidth() * globalscale)) / 2;
 	y_btnmm = y_mainmenu + (338 * globalscale);
 
+	statue1x = getWidth()/6 + 6;
+	statue2x = getWidth()*5/6-img_statue.getWidth()*0.1f;
+	statuey = getHeight()/2 - (img_statue.getHeight() * 0.1f)/2;
+
 	//CREATE BUTTONS
 	y_btnmm = y_mainmenu + (338 * globalscale);
 	createButton("New Game", x_btnmm, y_btnmm, 1, 255, 255, 255, font_BUTTON);
@@ -168,7 +172,7 @@ void MainMenu::drawLoad() {
 //	gLogi(gToStr(x));
 
 	font[font_LOAD1].drawText(loadingtext[0], getWidth()/2 - 100, getHeight()*4/5, 255, 255, 0);
-	font[font_LOAD2].drawText(loadingtext[1], getWidth()/2 - 250, getHeight()*4/5 + fontsizes[0]);
+	font[font_LOAD2].drawText(loadingtext[1], getWidth()/2 - 200, getHeight()*4/5 + fontsizes[0]);
 
 }
 
@@ -179,6 +183,8 @@ void MainMenu::drawMenu() {
 	img_background.draw(-20, -20);
 	setColor(255,255,255);
 	//img_menu.draw(0, 0);
+	img_statue.draw(statue1x, statuey, 0.1f);
+	img_statue.draw(statue2x, statuey, 0.1f);
 	img_menu.draw(x_mainmenu, y_mainmenu, globalscale);
 	drawButtons();
 
@@ -253,7 +259,7 @@ void MainMenu::savesMenu() {
 	if(loadsaveanimation == true) { // OPENING ANIMATION OF "LOAD SAVES" MENU
 		if( x_mainmenu > getWidth()/20 ) {
 			x_mainmenu -= 12; // recalculate menu's x value
-
+			statue1x += 21;
 			// Recalculate buttons' x values
 			x_btnmm2 = x_mainmenu + ((img_menu.getWidth() * globalscale) - (img_button[0].getWidth() * globalscale)) / 2;
 			x_btnmm = x_mainmenu + ((img_menu.getWidth() * globalscale) - (img_button[1].getWidth() * globalscale)) / 2;
@@ -266,7 +272,7 @@ void MainMenu::savesMenu() {
 	} else { // CLOSING ANIMATION OF "LOAD SAVES" MENU
 		if(x_mainmenu < (getWidth() - (img_menu.getWidth() * globalscale)) / 2) {
 			x_mainmenu += 12; // recalculate menu's x value
-
+			statue1x -= 21;
 			// Recalculate buttons' x values
 			x_btnmm2 = x_mainmenu + ((img_menu.getWidth() * globalscale) - (img_button[0].getWidth() * globalscale)) / 2;
 			x_btnmm = x_mainmenu + ((img_menu.getWidth() * globalscale) - (img_button[1].getWidth() * globalscale)) / 2;

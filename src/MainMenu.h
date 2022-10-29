@@ -59,6 +59,7 @@ public:
 	gImage img_button[buttonImageAmount];
 
 	gImage img_background;
+	gImage img_statue;
 	gImage img_blueprint;
 	gImage img_menu;
 	gImage img_dialogbox;
@@ -92,7 +93,7 @@ private:
 	int buttonPressed;
 
 	int x_mainmenu, y_mainmenu, x_btnmm, x_btnmm2, y_btnmm; //mainmenu
-
+	int statue1x, statue2x, statuey;
 	bool loadsaveanimation;
 
 };
