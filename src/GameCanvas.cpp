@@ -19,9 +19,9 @@ GameCanvas::~GameCanvas() {
 
 void GameCanvas::setup() {
 	DEBUG = true;
+	gLogi("GameCanvas Setup");
 	img_blueprint.loadImage("GUI/blueprint.png");
 
-	gLogi("GameCanvas Setup");
 }
 
 void GameCanvas::update() {
@@ -37,18 +37,13 @@ void GameCanvas::update() {
 		updateLoad(loadindex);
 		loadindex++;
 	} else if (game_status == PLAYING) {
-		gLogi("40.line");
 		listener();
-		gLogi("42.line");
 		updateCharacter();
-		gLogi("44.line");
 		updateMap();
-		gLogi("46.line");
 	}
 }
 
 void GameCanvas::draw() {
-
 	if (game_status == LOADING) {
 		drawLoad();
 		//debug
@@ -57,58 +52,33 @@ void GameCanvas::draw() {
 			font[font_LOAD2].drawText("Frames  passed : " + gToStr(framecounter),10,30);
 		}
 	} else if (game_status == PLAYING) {
-		gLogi("60.line");
 		//debug
 		if(DEBUG) {
 			font[font_LOAD2].drawText("Mouse Hold For " + gToStr(mouseHoldedFor_seconds) + " seconds",10,10);
 			font[font_LOAD2].drawText("Mouse Hold For " + gToStr(mouseHoldedFor_frames) + " frames",10,30);
-			gLogi("65.line");
 		}
 
 		drawGame();
-		gLogi("69.line");
 		drawGUI();
-		gLogi("71.line");
 	}
 
 }
 
 void GameCanvas::initilaize() {
-	gLogi("GameCanvas initilaize");
 	gFont empty1, empty2, empty3, empty4;
-	gLogi("#DEBUG_test(0)");
 		img_blueprint.loadImage("GUI/blueprint.png");
-	gLogi("#DEBUG_test(1)");
 		game_status = LOADING;
-	gLogi("#DEBUG_test(2)");
 		loadindex = 0;
-	gLogi("#DEBUG_test(3)");
 		framecounter = 0;
-	gLogi("#DEBUG_test(4)");
 		seccounter = 0;
-	gLogi("#DEBUG_test(5)");
-
-	gLogi("#DEBUG_test(6)");
 		buttonPressed = -1;
-	gLogi("#DEBUG_test(7)");
 		buildingPressed = -1;
-	gLogi("#DEBUG_test(8)");
-
-	gLogi("#DEBUG_test(9)");
 		mouseHold = false;
-	gLogi("#DEBUG_test(10)");
 		mouseHoldedFor_frames = 0;
-	gLogi("#DEBUG_test(11)");
 		mouseHoldedFor_seconds = 0;
-	gLogi("#DEBUG_test(12)");
 
-	gLogi("#DEBUG_test(13)");
 		mousex = getWidth() / 2;
-	gLogi("#DEBUG_test(14)");
 		mousey = getHeight() / 2;
-	gLogi("#DEBUG_test(15)");
-
-	gLogi("#DEBUG_test(16)");
 		fontsizes.push_back(24); //font_LOAD1
 		fontsizes.push_back(14); //font_LOAD2
 		fontsizes.push_back(18); //font_BUTTON
@@ -126,11 +96,8 @@ void GameCanvas::initilaize() {
 		font[font_BUTTON].loadFont("FreeSans.ttf", fontsizes[font_BUTTON]);
 		font[font_INGAME].loadFont("FreeSans.ttf", fontsizes[font_INGAME]);
 
-	gLogi("#DEBUG_test(24)");
 		loadingtext.push_back("LOADING");
-	gLogi("#DEBUG_test(25)");
 		loadingtext.push_back("");
-	gLogi("#DEBUG_test(26)");
 
 	gLogi("#DEBUG_test(27)");
 		interiorAmounts[SHOP_POTION] = 1;
@@ -143,70 +110,27 @@ void GameCanvas::initilaize() {
 	gLogi("#DEBUG_test(31)");
 		playerIndex = 0;
 	gLogi("#DEBUG_test(32)");
-	/*
-	gFont empty1, empty2;
-	img_blueprint.loadImage("GUI/blueprint.png");
-	game_status = LOADING;
-	loadindex = 0;
-	framecounter = 0;
-	seccounter = 0;
-
-	buttonPressed = -1;
-	buildingPressed = -1;
-
-	mouseHold = false;
-	mouseHoldedFor_frames = 0;
-	mouseHoldedFor_seconds = 0;
-
-	mousex = getWidth() / 2;
-	mousey = getHeight() / 2;
-
-	fontsizes.push_back(24);
-	fontsizes.push_back(14);
-
-	font.push_back(empty1);
-	font.push_back(empty2);
-	font[font_LOAD1].loadFont("FreeSans.ttf", fontsizes[font_LOAD1]);
-	font[font_LOAD2].loadFont("FreeSans.ttf", fontsizes[font_LOAD2]);
-
-	loadingtext.push_back("LOADING");
-	loadingtext.push_back("");
-
-	interiorAmounts[SHOP_POTION] = 1;
-	interiorAmounts[SHOP_ARMORY] = 1;
-
-	totalCharacterAmount = 1;
-	playerIndex = 0;
-*/
-	//initial character, database'den al bunlari sonra
-
 
 	std::vector<int> tmpvals;
 
 	for(int i = 0; i < totalCharacterAmount; i++) {
 		std::vector<gImage> tmpimgs;
-		img_characters.push_back(tmpimgs);
-		for(int vi = 0; vi < 6; vi++) {
-			//gImage tmpImg; //TODO burada kaldýn 29.10.2022 - 05.30 sebebini bul
-			//tmpImg.loadImage("game/charactertest/base.png");
-			//img_characters[i].push_back(tmpImg);
-			//gLogi("Success vi : " + gToStr(vi));
-		}
-		gLogi("Success!!");
 		characters.push_back(tmpvals);
 		gLogi("characters.push_back - ok");
 		characterEquipped.push_back(tmpvals);
 		gLogi("characterEquipped.push_back - ok");
 
 	}
-
+	/*
+	gLogi("194");
 	for(int i = 0; i < buildingAmount; i++) {
 		std::vector<int> tmpvals;
-		/*for(int vi = 0; vi < 11; vi++) {
-			tmpvals.push_back(0);
-		}*/
 		shopInventories.push_back(tmpvals);
+		for(int vi = 0; vi < 11; vi++) {
+			shopInventories[i].push_back(0);
+		}
 	}
+	gLogi("203");
 	gImage tmpi;
 	std::vector<gImage> tmp_imgvec;
 	std::vector<std::vector<gImage>> tmp_imgvecvec;
@@ -220,7 +144,7 @@ void GameCanvas::initilaize() {
 			//}
 		}
 	}
-
+*/
 	characters[playerIndex].push_back(cx);		//x
 	gLogi("#DEBUG_test(33)");
 	characters[playerIndex].push_back(cy);		//y
@@ -244,7 +168,7 @@ void GameCanvas::initilaize() {
 	characterEquipped[playerIndex].push_back(-1);//EFFECT
 	gLogi("#DEBUG_test(36)");
 	gLogi("characterEquipped[playerIndex][ARMOR] : " + gToStr(characterEquipped[playerIndex][ARMOR]) ); //ARMOR
-
+	/*
 	characterInventory.push_back(playerIndex);
 	characterInventory.push_back(1);		//Item Amount
 	characterInventory.push_back(123);		//Coins
@@ -261,13 +185,14 @@ void GameCanvas::initilaize() {
 	shopInventories[SHOP_POTION].push_back(99);
 	gLogi("#DEBUG_test(38)");
 
-
+	initilaized = true;
+	gLogi("ee amk");
+	*/
 }
 
 
 void GameCanvas::updateLoad(int index) {
 	loadingtext[1] = "Loaded : ";
-
 		switch (index) {
 		case 0:
 			img_menu.loadImage("menu/mainmenubg.png");
@@ -300,6 +225,7 @@ void GameCanvas::updateLoad(int index) {
 				for(int j = 0; j < interiorAmounts[i]; j++) {
 					gLogi("interiorAmounts[" + gToStr(i) + "] : " + gToStr(interiorAmounts[i]));
 					img_interior[i][j].loadImage("game/props/building_" + gToStr(i) + "" + gToStr(j) +".png");
+					gLogi("img_interior[i"+gToStr(i)+"][j"+gToStr(j)+"].loadImage('game/props/building_"+ gToStr(i) + "" + gToStr(j) +".png");
 				}
 			}
 		break;
@@ -316,6 +242,7 @@ void GameCanvas::updateLoad(int index) {
 				gLogi("game/charactertest/NPC_" + gToStr(i) + ".png");
 			}
 			break;
+			/*
 		case 8:
 			tmpimg.loadImage("game/charactertest/base.png");
 			for(int i = 0; i < 3; i++) { //RACE AMOUNT (ROCK-PAPER-SCISSORS)
@@ -328,15 +255,16 @@ void GameCanvas::updateLoad(int index) {
 			}
 			gLogi("case 8 ended");
 			break;
+	*/
 		case 9:
 			gLogi("case 9 start");
 
 
 
 			loadingtext[1] = "Fonts";
-			gLogi("case 9 mid");
+			gLogi("SETTING INITIAL VARS");
 			setInitialVariables();
-			gLogi("case 9 ended");
+			gLogi("INITIAL VARS HAS BEEN SETTED");
 			break;
 		case 100:
 			game_status = PLAYING;
@@ -348,43 +276,13 @@ void GameCanvas::updateLoad(int index) {
 
 void GameCanvas::setInitialVariables() {
 	gLogi("setInitVars");
-	/*
-	globalscale = getWidth() / 1920.0f;
-
-	keystate = 0;
-
-	cx = getWidth() / 2; // baþlangýç pozisyonu x
-	cy = 100; // baþlangýç pozisyonu y
-	cdx = 0, cdy = 0;
-
-	camx = img_background.getWidth() / 2;
-	camy = 0;
-	camx1 = 0, camy1 = 0;
-	camx2 = 0, camy2 = 0;
-	crot = 0;
-	mrot = 0;
-
-	characterframenum = 0;
-
-	propXs[SPAWN_POINT] = (getWidth() - img_props[SPAWN_POINT].getWidth()) / 2;
-	propYs[SPAWN_POINT] = 100 - (img_props[SPAWN_POINT].getHeight() / 2);
-
-	buildingXs[SHOP_POTION] = getWidth()/4 - img_buildings[SHOP_POTION].getWidth();
-	buildingYs[SHOP_POTION] = 250;
-
-	buildingXs[SHOP_ARMORY] = getWidth()*3/4;
-	buildingYs[SHOP_ARMORY] = 250;
-
-
-	characterframecounterlimit = 12 / cspeed;
-	*/
 
 	globalscale = getWidth() / 1920.0f;
 	gLogi("#DEBUG_test(39)");
 		keystate = 0;
 	gLogi("#DEBUG_test(40)");
 		cx = getWidth() / 2; // baþlangýç pozisyonu x
-		cy = getHeight()/20;; // baþlangýç pozisyonu y
+		cy = getHeight() / 5;; // baþlangýç pozisyonu y
 		cdx = 0, cdy = 0;
 	gLogi("#DEBUG_test(41)");
 
@@ -400,24 +298,31 @@ void GameCanvas::setInitialVariables() {
 		characterframenum = 0;
 
 	gLogi("#DEBUG_test(43)");
-		//propXs[SPAWN_POINT] = cx + camx + (img_characterBases[0].getWidth()/2)*globalscale - (img_props[SPAWN_POINT].getWidth()/2)*globalscale;
+		propXs[SPAWN_POINT] = cx + camx + (img_characterBases[0].getWidth()/2)*globalscale - (img_props[SPAWN_POINT].getWidth()/2)*globalscale;
 	gLogi("#DEBUG_test(44)");
-		//propYs[SPAWN_POINT] = getHeight()/20 + img_characterBases[0].getHeight()*globalscale - (img_props[SPAWN_POINT].getHeight()/2)*globalscale;
+		propYs[SPAWN_POINT] = cy + img_characterBases[0].getHeight()*globalscale - (img_props[SPAWN_POINT].getHeight()/2)*globalscale;
 	gLogi("#DEBUG_test(45)");
 		buildingXs[SHOP_POTION] = cx + camx - img_buildings[SHOP_POTION].getWidth()*3 * globalscale;
 	gLogi("#DEBUG_test(46)");
-		buildingYs[SHOP_POTION] = getHeight()/20;
+		buildingYs[SHOP_POTION] = getHeight() / 20;
 	gLogi("#DEBUG_test(47)");
 		buildingXs[SHOP_ARMORY] = cx + camx + img_buildings[SHOP_POTION].getWidth()*3 * globalscale;
 	gLogi("#DEBUG_test(48)");
-		buildingYs[SHOP_ARMORY] = getHeight()/20;
+		buildingYs[SHOP_ARMORY] = getHeight() / 20;
 
 	for(int i = 0; i < totalCharacterAmount; i++) {
+		std::vector<gImage> newImgChar;
+		img_characters.push_back(newImgChar);
 		int characterIndex = characters[i][0];
+		gLogi("characterIndex : " + gToStr(characterIndex));
 		int race = characters[i][5];
 		// character base
+		gLogi("img_characters[characterIndex(" +  gToStr(characterIndex)+ ")].push_back(img_characterBases[race(" +  gToStr(race)+ ")])");
+		gLogi("img_characterBases[race].getFullPath : " + gToStr(img_characterBases[race].getFullPath()));
+		gLogi("img_characterBases[race].getFilename : " + gToStr(img_characterBases[race].getFilename()));
 		img_characters[characterIndex].push_back(img_characterBases[race]); //cbase
 		// character armor
+		/*
 		img_characters[characterIndex].push_back(img_equipables[race][ARMOR][characterEquipped[characterIndex][ARMOR]]);
 		// character helmet
 		img_characters[characterIndex].push_back(img_equipables[race][HELMET][characterEquipped[characterIndex][HELMET]]);
@@ -425,15 +330,53 @@ void GameCanvas::setInitialVariables() {
 		img_characters[characterIndex].push_back(img_equipables[race][WEAPON][characterEquipped[characterIndex][WEAPON]]);
 		// character effect
 		img_characters[characterIndex].push_back(img_equipables[race][EFFECT][characterEquipped[characterIndex][EFFECT]]);
+	*/
 	}
+	gLogi("path : " + gToStr(img_characters[playerIndex][0].getFullPath()));
+	gLogi("filename : " + gToStr(img_characters[playerIndex][0].getFilename()));
 
 	characterframecounterlimit = 12 / cspeed;
 	gLogi("#DEBUG_test(58)");
+
+	//createBuilding(int index, int index_outerImg, float _x, float _y, std::string innerinfos) {
+	/* Building Structure :
+	 * [index, index_outerimg, x, y, innerinfo1, innerinfo2, innerinfo...]
+	 * (innerinfo0 : index_interiorImg)
+	 * (innerinfo1 : index_NPC)
+	 * (innerinfo2 : index_NPCx)
+	 * (innerinfo3 : index_NPCy)
+	 * (innerinfo4 : prop_amount) //prop amount in this interior
+	 * (innerinfo5+: [prop_index1, x1, y1], [prop_index2, x2, y2]...
+	 */
+	gLogi("buildingXs[SHOP_ARMORY], buildingYs[SHOP_ARMORY] : " + gToStr(buildingXs[SHOP_ARMORY]) + "," + gToStr(buildingYs[SHOP_ARMORY]));
+	gLogi("buildingXs[SHOP_POTION], buildingYs[SHOP_POTION] : " + gToStr(buildingXs[SHOP_POTION]) + "," + gToStr(buildingYs[SHOP_POTION]));
+	gLogi("\nimg_buildings[ARMORY].getWidth()/2, img_buildings[ARMORY].getHeight()/2\n" + gToStr(img_buildings[SHOP_ARMORY].getWidth()/2) + "," + gToStr(img_buildings[SHOP_ARMORY].getHeight()/2));
+	gLogi("\nimg_buildings[POTION].getWidth()/2, img_buildings[POTION].getHeight()/2\n" + gToStr(img_buildings[SHOP_POTION].getWidth()/2) + "," + gToStr(img_buildings[SHOP_POTION].getHeight()/2));
+
+	std::string innerinfo;
+	innerinfo = "0," + gToStr(SHOP_ARMORY) + "," + gToStr(getWidth()/3) + ","+ gToStr(getHeight()/4) +",0";
+	createBuilding(SHOP_ARMORY, SHOP_ARMORY, buildingXs[SHOP_ARMORY], buildingYs[SHOP_ARMORY], innerinfo);
+	innerinfo = "0," + gToStr(SHOP_POTION) + "," + gToStr(getWidth()/2) + ",50,0";
+	createBuilding(SHOP_POTION, SHOP_POTION, buildingXs[SHOP_POTION], buildingYs[SHOP_POTION], innerinfo);
+
+	/*
+	 * std::string innerinfo;
+	int x, y;
+	innerinfo = "0," + gToStr(SHOP_ARMORY) + "," + gToStr(getWidth()/3 - img_NPCs[SHOP_POTION].getWidth()*globalscale/2) + ","+ gToStr(getHeight()/4) +",0";
+	x = (getWidth() - img_interior[SHOP_ARMORY][0].getWidth())/2;
+	y = (getHeight() - img_interior[SHOP_ARMORY][0].getHeight())/2;
+	createBuilding(SHOP_ARMORY, SHOP_ARMORY, (getWidth() - img_interior[SHOP_ARMORY][0].getWidth())/2, buildingYs[SHOP_ARMORY], innerinfo);
+	innerinfo = "0," + gToStr(SHOP_POTION) + "," + gToStr((getWidth() - img_NPCs[SHOP_POTION].getWidth()*globalscale)/2) + ",50,0";
+	x = (getWidth() - img_interior[SHOP_POTION][0].getWidth())/2;
+	y = (getHeight() - img_interior[SHOP_POTION][0].getHeight())/2;
+	createBuilding(SHOP_POTION, SHOP_POTION, x, y, innerinfo);
+	 *
+	 */
+
 }
 
 /*[update] methods -> */
 void GameCanvas::updateCharacter() {
-	// Bu kontrolleri burada yapmak yerine switchcase'de yapsaydÄ±k yalnÄ±zca 1 defa Ã§alÄ±ÅŸÄ±rdÄ±
 	if ((keystate & KEY_W) != 0) {
 		//gLogi("W BASILIYOR");
 		//cdx = std::sin(gDegToRad(mrot)) * cspeed; // cdx - cdy
@@ -554,9 +497,7 @@ void GameCanvas::updateMap() {
 void GameCanvas::drawLoad() {
 
 	img_blueprint.draw(0, 0, globalscale);
-
 	if(framecounter % 15 == 0) {
-		gLogi("drawLoad()");
 		switch(loadingtext[0].length()) {
 		case 7: case 8: case 9:
 			loadingtext[0] += ".";
@@ -568,22 +509,20 @@ void GameCanvas::drawLoad() {
 	}
 	//int x = (getWidth() - font[font_LOAD1].getStringWidth(loadingtext[0]))/2;
 	//	gLogi(gToStr(x));
-
 	font[font_LOAD1].drawText(loadingtext[0],  getWidth()/2 - 100, getHeight()*4/5);
 	font[font_LOAD2].drawText(loadingtext[1],  getWidth()/2 - 200, getHeight()*4/5 + fontsizes[0]);
 }
 
 void GameCanvas::drawGame() {
-
-	gLogi("568");
+	//gLogi("568");
 	drawMapBG();
-	gLogi("576");
+	//gLogi("576");
 	drawMid();
-	gLogi("572");
+	//gLogi("572");
 	drawCharacter();
-	gLogi("574");
+	//gLogi("574");
 	drawMapFG();
-	gLogi("576");
+	//gLogi("576");
 }
 
 void GameCanvas::drawMapBG() {
@@ -592,9 +531,11 @@ void GameCanvas::drawMapBG() {
 		img_background.drawSub(0, 0, getWidth(), getHeight(), camx, camy, getWidth(), getHeight());
 	}
 	if(game_map == IN_BUILDING){ // draw building background
-		img_buildings[currentInterior[0]].draw(
-				((getWidth() - img_buildings[currentInterior[0]].getWidth()) / 2) * globalscale,
-				((getHeight() - img_buildings[currentInterior[0]].getHeight()) / 2) * globalscale,
+		gLogi("img_interior[buildingPressed(" + gToStr(buildingPressed) + ")][currentInterior[0](" + gToStr(currentInterior[0]) + ")]");
+		gLogi("img_interior[" + gToStr(buildingPressed) + "][" + gToStr(currentInterior[0]) + "]].getfilename : " + gToStr(img_interior[buildingPressed][currentInterior[0]] .getFilename()));
+		img_interior[buildingPressed][currentInterior[0]].draw(
+				(getWidth() - img_interior[buildingPressed][currentInterior[0]].getWidth() * globalscale) / 2,
+				(getHeight() - img_interior[buildingPressed][currentInterior[0]].getHeight()* globalscale) / 2 ,
 				globalscale);
 	}
 	//img_props[SPAWN_POINT].draw(propXs[SPAWN_POINT], propYs[SPAWN_POINT]);
@@ -603,9 +544,10 @@ void GameCanvas::drawMapBG() {
 void GameCanvas::drawMid() {
 	//healer
 	if(game_map == IN_MAP) { // draw props and buildings
-		//img_props[SPAWN_POINT].draw(propXs[SPAWN_POINT] - camx, propYs[SPAWN_POINT] - camy, globalscale);
+		img_props[SPAWN_POINT].draw(propXs[SPAWN_POINT] - camx, propYs[SPAWN_POINT] - camy, globalscale);
+		drawBuildings();
 		for(int buildingIndex = 0; buildingIndex < buildingAmount; buildingIndex++) {
-			img_buildings[buildingIndex].draw(buildingXs[buildingIndex] - camx, buildingYs[buildingIndex] - camy, globalscale);
+			//img_buildings[buildingIndex].draw(buildingXs[buildingIndex] - camx, buildingYs[buildingIndex] - camy, globalscale);
 			int initx = (img_buildings[buildingIndex].getWidth()/2)* globalscale;
 			if(buildingIndex == SHOP_ARMORY) {
 				font[font_INGAME].drawText("ARMORY SHOP", buildingXs[buildingIndex] - camx - (font[font_INGAME].getStringWidth("ARMORY SHOP")/2)*globalscale + initx, buildingYs[buildingIndex] + img_buildings[buildingIndex].getHeight()*globalscale - camy, 255, 220, 220);
@@ -615,7 +557,10 @@ void GameCanvas::drawMid() {
 		}
 	}
 	if(game_map == IN_BUILDING) { // draw NPC
-		img_NPCs[currentInterior[1]].draw(currentInterior[2], currentInterior[3]);
+		gLogi("img_NPCs[currentInterior[1](" + gToStr(currentInterior[1]) + ")]");
+		gLogi("img_NPCs[" + gToStr(currentInterior[1]) + "].getfilename : " + gToStr(img_NPCs[currentInterior[1]].getFilename()));
+
+		img_NPCs[currentInterior[1]].draw(currentInterior[2], currentInterior[3], globalscale);
 	}
 }
 
@@ -639,23 +584,28 @@ void GameCanvas::drawCharacter() {
 */
 
 	std::string str;
-gLogi("drawcharacter(0)");
+	//gLogi("drawcharacter(0)");
 	int initx = (img_characterBases[0].getWidth()/2)* globalscale ;
-gLogi("drawcharacter(1)");
+	//gLogi("drawcharacter(1)");
 	str = "Player(ID:" + gToStr(playerIndex) + ")";
-gLogi("drawcharacter(2)");
+	//gLogi("drawcharacter(2)");
 	font[font_INGAME].drawText(str, cx - (font[font_INGAME].getStringWidth(str)/2) + initx, cy - fontsizes[font_INGAME]*4.5);
-gLogi("drawcharacter(3)");
+	//gLogi("drawcharacter(3)");
 	str = "RaceIndex:"+gToStr(characters[playerIndex][5]);
-gLogi("drawcharacter(4)");
+	//gLogi("drawcharacter(4)");
 	font[font_INGAME].drawText(str, cx - (font[font_INGAME].getStringWidth(str)/2) + initx, cy - fontsizes[font_INGAME]*3);
-gLogi("drawcharacter(5)");
+	//gLogi("drawcharacter(5)");
 	str = "cx+camx:"+gToStr(cx+camx)+"|cy+camy:"+gToStr(cy+camy);
-gLogi("drawcharacter(6)");
+	//gLogi("drawcharacter(6)");
 	font[font_INGAME].drawText(str, cx - (font[font_INGAME].getStringWidth(str)/2) + initx, cy - fontsizes[font_INGAME]*1.5,20,255,20);
-gLogi("drawcharacter(7)");
-	img_characters[playerIndex][0].draw(cx, cy, globalscale); //void draw(int x, int y, int w, int h, float rotate);
 
+	//gLogi("drawcharacter(7)");
+	//gLogi("playerIndex : " + gToStr(playerIndex));
+	//gLogi("path : " + gToStr(img_characters[playerIndex][0].getFullPath()));
+	//gLogi("filename : " + gToStr(img_characters[playerIndex][0].getFilename()));
+	//gLogi("drawcharacter(8)");
+	img_characters[playerIndex][0].draw(cx, cy, globalscale); //void draw(int x, int y, int w, int h, float rotate);
+	//gLogi("drawcharacter(9)");
 }
 
 void GameCanvas::drawMapFG() {
@@ -789,12 +739,19 @@ void GameCanvas::mouseReleased(int x, int y, int button) {
 			gLogi("buttonPressed = " + gToStr(b));
 		}
 	}
-
+	gLogi("building.size" + gToStr(buildings.size())); // TODO: burada kaldin binalari dumduz cizdirdigin icin calismiyor, onun yerine olusturdugun createBuilding methodunu kullan!
 	for(int b = 0; b < buildings.size(); b++) {
-		if(x > (gToInt(buildings[b][3]) - img_buildings[gToInt(buildings[b][1])].getWidth() / 2) &&
-		   y > (gToInt(buildings[b][4]) - img_buildings[gToInt(buildings[b][1])].getHeight() / 2) &&
-		   x < (gToInt(buildings[b][3]) - img_buildings[gToInt(buildings[b][1])].getWidth() / 2) &&
-		   y < (gToInt(buildings[b][4])) - img_buildings[gToInt(buildings[b][1])].getHeight() / 2){
+		gLogi("#########\nBuilding : "+gToStr(b)+":\n");
+		gLogi("(\nx: " + gToStr(x) + "+ camx" + gToStr(camx) + ")" + gToStr(x + camx) + ") > " + gToStr(gToInt(buildings[b][2])) + " &&\n" +
+			   "\ny: " + gToStr(y) + "+ camy" + gToStr(camy) + ")" + gToStr(y + camy) + ") > " + gToStr(gToInt(buildings[b][3])) + " &&"+
+			   "\nx: " + gToStr(x + camx) + " < " + gToStr(gToInt(buildings[b][2]) + img_buildings[gToInt(buildings[b][1])].getWidth()*globalscale) + " &&"+
+			   "\ny: " + gToStr(y + camy) + " < " + gToStr(gToInt(buildings[b][3]) + img_buildings[gToInt(buildings[b][1])].getHeight()*globalscale));
+	}
+	for(int b = 0; b < buildings.size(); b++) {
+		if(x + camx > gToInt(buildings[b][2])&&
+		   y + camy > gToInt(buildings[b][3]) &&
+		   x + camx < (gToInt(buildings[b][2]) + img_buildings[gToInt(buildings[b][1])].getWidth()*globalscale) &&
+		   y + camy < (gToInt(buildings[b][3])) + img_buildings[gToInt(buildings[b][1])].getHeight()*globalscale){
 			buildingPressed = b;
 			gLogi("buildingPressed = " + gToStr(b));
 		}
@@ -870,29 +827,32 @@ void GameCanvas::listener() {
 	    std::vector<std::string> innerInfo = gSplitString(buildings[buildingPressed][4], ",");
 		if(innerInfo[0] != "-1") {
 			game_map = IN_BUILDING;
+			gLogi("Building Pressed : " + gToStr(buildingPressed));
+			gLogi("Building Pressed : " + gToStr(buildings[buildingPressed][0]));
 			for(int i = 0; i < innerInfo.size(); i++) {
+				gLogi("CurrentInreior["+gToStr(i)+"] : " + gToStr(gToInt(innerInfo[i])));
 				currentInterior.push_back(gToInt(innerInfo[i]));
 			}
 		}
 
-		buildingPressed = -1; // reset action
+		//buildingPressed = -1; // reset action
 	}
 }
 
 void GameCanvas::createBuilding(int index, int index_outerImg, float _x, float _y, std::string innerinfos) {
 	std::vector<std::string> tmpBuilding;
-	float x = _x - img_buildings[index_outerImg].getWidth()/2;
-	float y = _y - img_buildings[index_outerImg].getHeight()/2;
+	//float x = _x - img_buildings[index_outerImg].getWidth()/2;
+	//float y = _y - img_buildings[index_outerImg].getHeight()/2;
 	tmpBuilding.push_back(gToStr(index));
 	tmpBuilding.push_back(gToStr(index_outerImg));
-	tmpBuilding.push_back(gToStr(x));
-	tmpBuilding.push_back(gToStr(y));
+	tmpBuilding.push_back(gToStr(_x));
+	tmpBuilding.push_back(gToStr(_y));
 	tmpBuilding.push_back(innerinfos);
 	buildings.push_back(tmpBuilding);
 }
 
 void GameCanvas::drawBuildings() {
 	for(int b = 0; b < buildings.size(); b++) {
-		img_buildings[gToInt(buildings[b][1])].draw(gToInt(buildings[b][2]), gToInt(buildings[b][3]), globalscale);
+		img_buildings[gToInt(buildings[b][1])].draw(gToInt(buildings[b][2]) - camx, gToInt(buildings[b][3]) - camy, globalscale);
 	}
 }

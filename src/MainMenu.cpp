@@ -229,8 +229,12 @@ void MainMenu::listenButtons() {
 		if(buttonPressed == 0) {
 			gLogi("[Play Game] pressed");
 			GameCanvas *cnv = new GameCanvas(root);
-			cnv->initilaize();
+			gLogi("[GameCanvas *cnv] is created");
+			//cnv->initilaize();
+
+			gLogi("[GameCanvas->initilaize()] Success");
 			gLogi("test | before setting new canvas");
+			cnv->initilaize();
 			root->setCurrentCanvas(cnv); //bu canvas degistirme olayini switch'te yapinca hata verdi.
 		} else {
 			switch (buttonPressed) {
