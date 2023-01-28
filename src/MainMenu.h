@@ -43,11 +43,11 @@ public:
 	// // // // // // // // // // // // // // // // //
 
 	static const int MENU = -1, LOADING = 0, PLAYING = 1, PAUSED = 2, LOADSAVE = 3;
-	static const int font_LOAD1 = 0, font_LOAD2 = 1, font_BUTTON = 2, font_INGAME = 3;
+	static const int font_LOAD1 = 0, font_LOAD2 = 1, font_BUTTON = 2, font_TITLE = 3;
 	static const int buttonImageAmount = 4;
 
 	int framecounter, seccounter;
-
+	int menuBrightness, bgBrightness;
 	void createButton(std::string btntext, int btnx = 0, int btny = 0, int btntype = 0, int btnR = 255, int btnG = 255, int btnB = 255, int texttype = 0);
 	void drawButton(std::string btntext, int btnx = 0, int btny = 0, int btntype = 0, int btnR = 255, int btnG = 255, int btnB = 255, int texttype = 0); //0 -> default(15) | 1 -> savefont(12)
 	void drawButtons();
@@ -57,6 +57,10 @@ public:
 	std::vector<gFont> font;
 	std::vector<int> fontsizes;
 	gImage img_button[buttonImageAmount];
+
+	std::string title = "- Rock Paper Scissors RPG -";
+	std::string creditsDEV = "- Ege BULUT | Erdoðan AKPOLAT -";
+	std::string creditsART = "- Sinem GENÇER -";
 
 	gImage img_background;
 	gImage img_statue;

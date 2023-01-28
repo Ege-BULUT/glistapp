@@ -1,0 +1,4 @@
+C:/dev/glist/myglistapps/glistapp/cmake-build-debug/CMakeFiles/GlistEngine.dir
+C:/dev/glist/myglistapps/glistapp/cmake-build-debug/CMakeFiles/GlistApp.dir
+C:/dev/glist/myglistapps/glistapp/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/dev/glist/myglistapps/glistapp/cmake-build-debug/CMakeFiles/rebuild_cache.dir

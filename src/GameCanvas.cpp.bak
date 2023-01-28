@@ -1,0 +1,1529 @@
+/*
+ * Creators : Ege BULUT & Erdoðan
+ *
+ *
+ *
+ *
+ */
+
+
+#include "GameCanvas.h"
+#include "MainMenu.h"
+#include "gUtils.h"
+
+GameCanvas::GameCanvas(gApp* root) : gBaseCanvas(root) {
+	this->root = root;
+}
+
+GameCanvas::~GameCanvas() {
+}
+
+void GameCanvas::setup() {
+	DEBUG = false;
+
+	gLogi("GameCanvas Setup");
+	img_blueprint.loadImage("GUI/blueprint.png");
+
+}
+
+void GameCanvas::update() {
+	framecounter++;
+	if(mouseHold) {
+		mouseHoldedFor_frames++;
+		if(framecounter % 60 == 0) {
+			mouseHoldedFor_seconds++;
+		}
+	}
+
+	if (game_status == LOADING) {
+		gLogi("\n#\nloadindex: " + gToStr(loadindex) + "\n#");
+		updateLoad(loadindex);
+		loadindex++;
+	} else if (game_status == PLAYING) {
+		listener();
+		updateCharacter();
+		updateButtons();
+		updateMap();
+	}
+}
+
+void GameCanvas::draw() {
+	if (game_status == LOADING) {
+		drawLoad();
+		//debug
+		if(DEBUG) {
+			fonts[font_LOAD2].drawText("Seconds passed : " + gToStr(seccounter),10,10);
+			fonts[font_LOAD2].drawText("Frames  passed : " + gToStr(framecounter),10,30);
+		}
+	} else if (game_status == PLAYING) {
+		//debug
+
+
+		drawGame();
+		drawGUI();
+
+		if(DEBUG) {
+			fonts[font_INGAME].drawText("game_map == " + gToStr(game_map), 20, 100);
+			fonts[font_LOAD2].drawText("Mouse Hold For " + gToStr(mouseHoldedFor_seconds) + " seconds",10,10);
+			fonts[font_LOAD2].drawText("Mouse Hold For " + gToStr(mouseHoldedFor_frames) + " frames",10,30);
+			fonts[font_INGAME].drawText("x:"+gToStr(mousex)+",y:"+gToStr(mousey), mousex, mousey+5);
+		}
+	}
+
+}
+
+void GameCanvas::initilaize() {
+	img_blueprint.loadImage("GUI/blueprint.png");
+	game_status = LOADING;
+	game_map = IN_MAP;
+	loadindex = 0;
+	framecounter = 0;
+	seccounter = 0;
+	buttonPressed = -1;
+	buildingPressed = -1;
+	mouseHold = false;
+	mouseHoldedFor_frames = 0;
+	mouseHoldedFor_seconds = 0;
+	mousex = getWidth() / 2;
+	mousey = getHeight() / 2;
+
+	env_amounts[GRASS] = 5;
+	env_amounts[STONE] = 3;
+	env_amounts[TREE] = 3;
+
+	gLogi("#DEBUG_test(19)");
+	gLogi("#DEBUG_test(20)");/*
+	fonts.push_back(font_load_1);
+	fonts.push_back(font_load_2);
+	fonts.push_back(font_button_1);
+	fonts.push_back(font_ingame_1);*/
+	gLogi("#DEBUG_test(21)");/*
+	fonts[font_LOAD1].loadFont("FreeSans.ttf", fontsizes[font_LOAD1]);
+	fonts[font_LOAD2].loadFont("FreeSans.ttf", fontsizes[font_LOAD2]);
+	fonts[font_BUTTON].loadFont("FreeSans.ttf", fontsizes[font_BUTTON]);
+	fonts[font_INGAME].loadFont("FreeSans.ttf", fontsizes[font_INGAME]);
+*/
+	loadingtext.push_back("LOADING");
+	loadingtext.push_back("");
+
+	characterscalelevel = 2;
+	globalscalelevel = 2;
+
+	scalelevels.push_back(0.5); // 0
+	scalelevels.push_back(0.8); // 1
+	scalelevels.push_back(1.0); // 2
+	scalelevels.push_back(1.2); // 3
+	scalelevels.push_back(1.5); // 4
+	scalelevels.push_back(1.8); // 5
+	scalelevels.push_back(2.5); // 6
+	scalelevels.push_back(3.0); // 7
+
+	fontsizes.push_back(24); //font_LOAD1
+	fontsizes.push_back(14); //font_LOAD2
+	fontsizes.push_back(18); //font_BUTTON
+	fontsizes.push_back(12); //font_INGAME
+
+	font_load_1.loadFont("FreeSans.ttf", fontsizes[font_LOAD1]);
+	font_load_2.loadFont("FreeSans.ttf", fontsizes[font_LOAD2]);
+	font_button_1.loadFont("FreeSans.ttf", fontsizes[font_BUTTON]);
+	font_ingame_1.loadFont("FreeSans.ttf", fontsizes[font_INGAME]);
+
+	gLogi("case 12 - 1");
+	fonts[font_LOAD1] = (font_load_1);
+	gLogi("case 12 - 2");
+	fonts[font_LOAD2] = (font_load_2);
+	gLogi("case 12 - 3");
+	fonts[font_BUTTON] = (font_button_1);
+	gLogi("case 12 - 4");
+	fonts[font_INGAME] = (font_ingame_1);
+	gLogi("case 12 - 5");
+
+	gLogi("#DEBUG_test(27)");
+	interiorAmounts[BUILDING_PAPER] = 1;
+	gLogi("#DEBUG_test(28)");
+	interiorAmounts[BUILDING_ROCK] = 1;
+	gLogi("#DEBUG_test(29)");
+	interiorAmounts[BUILDING_SCISSORS] = 1;
+	interiorAmounts[3] = 1;
+	interiorAmounts[4] = 1;
+	interiorAmounts[5] = 1;
+	interiorAmounts[6] = 1;
+	interiorAmounts[7] = 1;
+	interiorAmounts[8] = 1;
+	interiorAmounts[9] = 0;
+
+	gLogi("#DEBUG_test(30)");
+	totalCharacterAmount = 1;
+	gLogi("#DEBUG_test(31)");
+	playerIndex = 0;
+	gLogi("#DEBUG_test(32)");
+
+	std::vector<int> tmpvals;
+
+	for(int i = 0; i < totalCharacterAmount; i++) {
+		std::vector<gImage> tmpimgs;
+		characters.push_back(tmpvals);
+		gLogi("characters.push_back - ok");
+		characterEquipped.push_back(tmpvals);
+		gLogi("characterEquipped.push_back - ok");
+
+	}
+	/*
+	gLogi("194");
+	for(int i = 0; i < buildingAmount; i++) {
+		std::vector<int> tmpvals;
+		shopInventories.push_back(tmpvals);
+		for(int vi = 0; vi < 11; vi++) {
+			shopInventories[i].push_back(0);
+		}
+	}
+	gLogi("203");
+	gImage tmpi;
+	std::vector<gImage> tmp_imgvec;
+	std::vector<std::vector<gImage>> tmp_imgvecvec;
+	tmpi.loadImage("game/charactertest/base.png");
+	for(int i = 0; i < 4; i++) { //RACE AMOUNT (ROCK-PAPER-SCISSORS)
+		img_equipables.push_back(tmp_imgvecvec);
+		for(int j = 0; j < 5; j++) { //TYPE AMOUNT (ARMOR-HELMET-WEAPON-EFFECT)
+			img_equipables[i].push_back(tmp_imgvec);
+			//for(int k = 0; k < 5; k++) { //TYPE AMOUNT (ARMOR-HELMET-WEAPON-EFFECT)
+			//	img_equipables[i][j].push_back(tmpi);
+			//}
+		}
+	}
+*/
+	characters[playerIndex].push_back(cx);		//x
+	gLogi("#DEBUG_test(33)");
+	characters[playerIndex].push_back(cy);		//y
+	characters[playerIndex].push_back(crot);	//rotation
+	characters[playerIndex].push_back(characterframeno);
+	characters[playerIndex].push_back(0);	//race
+	characters[playerIndex].push_back(1); 		//level
+	gLogi("#DEBUG_test(34)");
+
+	characters[playerIndex].push_back(1);		//STR
+	characters[playerIndex].push_back(1);		//VIT
+	characters[playerIndex].push_back(1);		//DEF/DEX
+	characters[playerIndex].push_back(1);		//AGI/STA
+	characters[playerIndex].push_back(1);		//MAG
+	gLogi("#DEBUG_test(35)");
+
+	characterEquipped[playerIndex].push_back(0); // BASE
+	characterEquipped[playerIndex].push_back(0); //ARMOR
+	characterEquipped[playerIndex].push_back(0); //HELMET
+	characterEquipped[playerIndex].push_back(0); //WEAPON
+	characterEquipped[playerIndex].push_back(-1);//EFFECT
+	gLogi("#DEBUG_test(36)");
+	gLogi("characterEquipped[playerIndex][ARMOR] : " + gToStr(characterEquipped[playerIndex][ARMOR]) ); //ARMOR
+	/*
+	characterInventory.push_back(playerIndex);
+	characterInventory.push_back(1);		//Item Amount
+	characterInventory.push_back(123);		//Coins
+	characterInventory.push_back(1);		//ItemIndex
+	characterInventory.push_back(5);		//Item Amount
+	gLogi("#DEBUG_test(37)");
+
+	shopInventories[SHOP_POTION].push_back(0);
+	shopInventories[SHOP_POTION].push_back(2);
+	shopInventories[SHOP_POTION].push_back(1500);
+	shopInventories[SHOP_POTION].push_back(1);
+	shopInventories[SHOP_POTION].push_back(99);
+	shopInventories[SHOP_POTION].push_back(2);
+	shopInventories[SHOP_POTION].push_back(99);
+	gLogi("#DEBUG_test(38)");
+
+	initilaized = true;
+	gLogi("ee amk");
+	*/
+
+	//Vegetation Part
+	std::vector<std::vector<float>> dummy;
+	vegetations.push_back(dummy);
+	vegetations.push_back(dummy);
+	vegetations.push_back(dummy);
+
+	//vegetationCoordinates[TREE] = scatterRandPointsOnGeometry(mapBoundaries, tree_amount);
+	int grass_amount = 40;
+	int tree_amount = 20;
+	int stone_amount = 30;
+	vegetationAmounts.push_back(grass_amount);
+	vegetationAmounts.push_back(tree_amount);
+	vegetationAmounts.push_back(stone_amount);
+}
+
+void GameCanvas::updateLoad(int index) {
+	loadingtext[1] = "Loaded : ";
+		switch (index) {
+		case 0:
+			img_menu.loadImage("menu/mainmenubg.png");
+			loadingtext[1] += "menu/mainmenubg.png";
+			break;
+		case 1:
+			img_dialogbox.loadImage("GUI/dialogbox2.png");
+			loadingtext[1] += "GUI/dialogbox.png";
+			break;
+		case 2: // BUTTONLAR YÜKLENDÝ
+			loadingtext[1] += "menu/btn.png";
+			for(int i = 0; i < btnAmount; i++) {
+				img_button[i].loadImage("menu/btn_" + gToStr(i) + ".png");
+			}
+			break;
+		case 3:
+			img_background.loadImage("game/map.png");
+			loadingtext[1] += "game/map.png";
+			break;
+		case 4:
+			loadingtext[1] += "Props";
+			for(int i = 0; i < propAmount; i++) {
+				img_props[i].loadImage("game/props/prop_" + gToStr(i) + ".png");
+			}
+			break;
+		case 5:
+			loadingtext[1] += "Buildings";
+			for(int i = 0; i < buildingAmount; i++) {
+				img_buildings[i].loadImage("game/props/building_" + gToStr(i) + ".png");
+				for(int j = 0; j < interiorAmounts[i]; j++) {
+					gLogi("interiorAmounts[" + gToStr(i) + "] : " + gToStr(interiorAmounts[i]));
+					img_interior[i][j].loadImage("game/props/building_" + gToStr(i) + "" + gToStr(j) +".png");
+					gLogi("img_interior[i"+gToStr(i)+"][j"+gToStr(j)+"].loadImage('game/props/building_"+ gToStr(i) + "" + gToStr(j) +".png");
+				}
+			}
+		break;
+		case 6:
+			loadingtext[1] += "NPCs";
+			for(int i = 0; i < NPCAmount; i++) {
+				img_NPCs[i].loadImage("game/props/NPC_" + gToStr(i) + ".png");
+			}
+		break;
+		case 7:
+			for(int i = 0; i < 3; i++) {
+				img_characterBases[i].loadImage("game/charactertest/NPC_" + gToStr(i) + ".png");
+				loadingtext[1] += "game/charactertest/NPC_" + gToStr(i) + ".png";
+				gLogi("game/charactertest/NPC_" + gToStr(i) + ".png");
+			}
+			break;
+		case 8:
+			for(int i = 0; i < 3; i++) {
+				for(int j = 0; j < env_amounts[i]; j++) {
+					std::string prefix;
+					if(i == GRASS) {
+						prefix = "grass";
+					}
+					if(i == STONE) {
+						prefix = "rock";
+					}
+					if(i == TREE) {
+						prefix = "tree";
+					}
+					gLogi("img_ENVs[i][j].loadImage('game/props/env_'" + prefix + "'_'"+gToStr(j));
+
+					img_ENVs[i][j].loadImage("game/props/env_" + prefix + "_"+gToStr(j)+".png");
+
+					gLogi("img_ENVs[i][j].getFilename() : " + gToStr(img_ENVs[i][j].getFilename()));
+				}
+			}
+			loadingtext[1] = "ENV props";
+			gLogi("ENV props");
+			break;
+		case 9:
+
+			imgs_Training_Ground[0].loadImage("game/props/TrainingGround_bg.png");
+			imgs_Training_Ground[1].loadImage("game/props/TrainingGround_cati_25.png");
+			imgs_Training_Ground[2].loadImage("game/props/TrainingGround_cati_100.png");
+			imgs_Training_Ground[3].loadImage("game/props/TrainingGround_area_1.png");
+			imgs_Training_Ground[4].loadImage("game/props/TrainingGround_area_2.png");
+
+			loadingtext[1] += "Training Grounds";
+
+			/*
+			tmpimg.loadImage("game/charactertest/base.png");
+			for(int i = 0; i < 3; i++) { //RACE AMOUNT (ROCK-PAPER-SCISSORS)
+				for(int j = 0; j < 5; j++) { //TYPE AMOUNT (ARMOR-HELMET-WEAPON-EFFECT)
+					for(int k = 0; k < 2; k++) {
+						img_equipables[i][j].push_back(tmpimg);
+						gLogi("game/charactertest/base.png [" + gToStr(i) + "][" + gToStr(j) + "][" + gToStr(k) + "]");
+					}
+				}
+			}
+			gLogi("case 8 ended");
+			*/
+			break;
+		case 10:
+			gLogi("case 10 start");
+			loadingtext[1] = "initial variables";
+			gLogi("SETTING INITIAL VARS");
+			setInitialVariables();
+			gLogi("Fonts loaded again");
+			gLogi("INITIAL VARS HAS BEEN SETTED");
+			gLogi("gamestatus : " + gToStr(game_status));
+			gLogi("gamemap : " + gToStr(game_map));
+			break;
+		case 100:
+			gLogi("case 11");
+			game_status = PLAYING;
+			game_map = IN_MAP;
+			gLogi("Game Loaded");
+			break;
+		default:
+			gLogi("index: " + gToStr(index));
+			loadingtext[1] += "...";
+			break;
+		}
+}
+
+void GameCanvas::setInitialVariables() {
+	std::vector<gFont> tmpfonts;
+	gLogi("setInitVars");
+
+	globalscale = getWidth() / 1920.0f;
+	gLogi("#DEBUG_test(39)");
+		keystate = 0;
+	gLogi("#DEBUG_test(40)");
+		cx = getWidth() / 2; // baþlangýç pozisyonu x
+		cy = getHeight() / 5;; // baþlangýç pozisyonu y
+		cdx = 0, cdy = 0;
+	gLogi("#DEBUG_test(41)");
+
+	/*
+	camx = (img_background.getWidth()*globalscale - getWidth()) / 2;
+	camy = 0;
+	camx1 = 10; //getWidth() >> 3;
+	camy1 = 10; //getHeight() >> 3;
+	camx2 = getWidth() - 10; //(getWidth() * 7) >> 3;
+	camy2 = getHeight() - 10; //(getHeight() * 7) >> 3;;
+	 */
+
+	camx = (img_background.getWidth()*globalscale - getWidth()) / 2;
+	camy = 0;
+	camx1 = 100; //getWidth() >> 3;
+	camy1 = 100; //getHeight() >> 3;
+	camx2 = getWidth() - img_characterBases[0].getWidth() - 100; //(getWidth() * 7) >> 3;
+	camy2 = getHeight() - img_characterBases[0].getWidth() - 100; //(getHeight() * 7) >> 3;;
+
+	
+
+	cspeed = 2.0f;
+	crot = 0;
+	mrot = 0;
+	characterframenum = 0;
+
+	gLogi("#DEBUG_test(43)");
+	propXs[SPAWN_POINT] = cx + camx + (img_characterBases[0].getWidth()/2)*globalscale - (img_props[SPAWN_POINT].getWidth()/2)*globalscale;
+	propYs[SPAWN_POINT] = cy + img_characterBases[0].getHeight()*globalscale - (img_props[SPAWN_POINT].getHeight()/2)*globalscale;
+	buildingXs[BUILDING_PAPER] = cx + camx - img_buildings[BUILDING_PAPER].getWidth()*3 * globalscale;
+	buildingYs[BUILDING_PAPER] = getHeight() / 20;
+	buildingXs[BUILDING_ROCK] = cx + camx + img_buildings[BUILDING_PAPER].getWidth()*3 * globalscale;
+	buildingYs[BUILDING_ROCK] = buildingYs[BUILDING_PAPER];
+	buildingXs[BUILDING_SCISSORS] = buildingXs[BUILDING_ROCK];
+	buildingYs[BUILDING_SCISSORS] = buildingYs[BUILDING_PAPER] + img_buildings[BUILDING_SCISSORS].getHeight()*1.5f;
+	buildingXs[BUILDING_TRAINING] = buildingXs[BUILDING_PAPER];
+	buildingYs[BUILDING_TRAINING] = buildingYs[BUILDING_SCISSORS];
+
+	tg_coordinates[0] = (getWidth()  - imgs_Training_Ground[0].getWidth() )/2; 	// tg_bg_x
+	tg_coordinates[1] = (getHeight() - imgs_Training_Ground[0].getHeight())/2; 	// tg_bg_y
+	tg_coordinates[2] = (getWidth()  - imgs_Training_Ground[1].getWidth() )/2; 	// tg_cati_x
+	tg_coordinates[3] = (getHeight() - imgs_Training_Ground[1].getHeight())/2; 	// tg_cati_y
+	tg_coordinates[4] = tg_coordinates[0] + imgs_Training_Ground[1].getWidth()
+			          + (getWidth()  - imgs_Training_Ground[3].getWidth() )/2; 	// tg_area_x
+	tg_coordinates[5] = (getHeight() - imgs_Training_Ground[3].getHeight())/2; 	// tg_area_y
+
+	gLogi("#DEBUG_test(44)");
+
+	createButton("Exit", getWidth()/2, getHeight()*9/10, 0, 255, 255, 255, font_BUTTON, BUTTON_GUI, false); // index = Button_ExitBuilding = 0
+	createButton("Enter Armory", buildingXs[BUILDING_ROCK], (buildingYs[BUILDING_ROCK] + (img_buildings[BUILDING_ROCK].getHeight() * globalscale)), 1, 255, 255, 255, font_BUTTON, BUTTON_INGAME, false); // index = Button_Armory = 1
+	createButton("Enter Potionary", buildingXs[BUILDING_PAPER], (buildingYs[BUILDING_PAPER] + (img_buildings[BUILDING_PAPER].getHeight() * globalscale)), 1, 255, 255, 255, font_BUTTON, BUTTON_INGAME, false); // index = Button_Potionary = 2
+	createButton("Enter Building", buildingXs[BUILDING_SCISSORS], (buildingYs[BUILDING_SCISSORS] + (img_buildings[BUILDING_SCISSORS].getHeight() * globalscale)), 1, 255, 255, 255, font_BUTTON, BUTTON_INGAME, false); // index = Button_Assassin = 3
+	createButton("Enter Area", buildingXs[BUILDING_TRAINING], (buildingYs[BUILDING_TRAINING] + (img_buildings[BUILDING_TRAINING].getHeight() * globalscale)), 1, 255, 255, 255, font_BUTTON, BUTTON_INGAME, false); // index = Button_Assassin = 3
+
+	//createButton("TestBtn1", getWidth()/2, getHeight()/2, 2, 255, 255, 0, font_BUTTON, BUTTON_INGAME);
+	//createButton("TestBtn2", getWidth()/2, getHeight()/2, 3, 255, 255, 0, font_BUTTON, BUTTON_GUI);
+
+	for(int i = 0; i < totalCharacterAmount; i++) {
+		std::vector<gImage> newImgChar;
+		img_characters.push_back(newImgChar);
+		int characterIndex = characters[i][0];
+		gLogi("characterIndex : " + gToStr(characterIndex));
+		int race = characters[i][5];
+		// character base
+		if(DEBUG) {
+			gLogi("img_characters[characterIndex(" +  gToStr(characterIndex)+ ")].push_back(img_characterBases[race(" +  gToStr(race)+ ")])");
+			gLogi("img_characterBases[race].getFullPath : " + gToStr(img_characterBases[race].getFullPath()));
+			gLogi("img_characterBases[race].getFilename : " + gToStr(img_characterBases[race].getFilename()));
+		}
+		img_characters[characterIndex].push_back(img_characterBases[race]); //cbase
+		// character armor
+		/*
+		img_characters[characterIndex].push_back(img_equipables[race][ARMOR][characterEquipped[characterIndex][ARMOR]]);
+		// character helmet
+		img_characters[characterIndex].push_back(img_equipables[race][HELMET][characterEquipped[characterIndex][HELMET]]);
+		// character weapon
+		img_characters[characterIndex].push_back(img_equipables[race][WEAPON][characterEquipped[characterIndex][WEAPON]]);
+		// character effect
+		img_characters[characterIndex].push_back(img_equipables[race][EFFECT][characterEquipped[characterIndex][EFFECT]]);
+	*/
+	}
+	if(DEBUG) {
+		gLogi("path : " + gToStr(img_characters[playerIndex][0].getFullPath()));
+		gLogi("filename : " + gToStr(img_characters[playerIndex][0].getFilename()));
+	}
+	characterframecounterlimit = 12 / cspeed;
+	if(DEBUG) gLogi("#DEBUG_test(58)");
+
+
+	if(DEBUG) {
+		gLogi("buildingXs[BUILDING_ROCK], buildingYs[BUILDING_ROCK] : " + gToStr(buildingXs[BUILDING_ROCK]) + "," + gToStr(buildingYs[BUILDING_ROCK]));
+		gLogi("buildingXs[SHOP_POTION], buildingYs[SHOP_POTION] : " + gToStr(buildingXs[BUILDING_PAPER]) + "," + gToStr(buildingYs[BUILDING_PAPER]));
+		gLogi("\nimg_buildings[ARMORY].getWidth()/2, img_buildings[ARMORY].getHeight()/2\n" + gToStr(img_buildings[BUILDING_ROCK].getWidth()/2) + "," + gToStr(img_buildings[BUILDING_ROCK].getHeight()/2));
+		gLogi("\nimg_buildings[POTION].getWidth()/2, img_buildings[POTION].getHeight()/2\n" + gToStr(img_buildings[BUILDING_PAPER].getWidth()/2) + "," + gToStr(img_buildings[BUILDING_PAPER].getHeight()/2));
+	}
+
+	std::string innerinfo;
+
+	// ##### BÝNA YARATMA #####
+
+	//inner info ve createbuilding icin ister .h headeri ister asagidaki yorum satirlarini okuyabilirsin.
+	/* Building Structure :
+	 * [index, index_outerimg, x, y, innerinfo1, innerinfo2, innerinfo...]
+	 * (innerinfo0 : index_interiorImg)
+	 * (innerinfo1 : index_NPC)
+	 * (innerinfo2 : index_NPCx)
+	 * (innerinfo3 : index_NPCy)
+	 * (innerinfo4 : playerspawnx)
+	 * (innerinfo5 : playerspawny)
+	 * (innerinfo6 : prop_amount) //prop amount in this interior
+	 * (innerinfo7+: [prop_index1, x1, y1], [prop_index2, x2, y2]...
+	 *
+	 *örnek:
+	 * innerinfo = odaindexi, npcindexi, npcx, npcy, propmiktarý(0)
+	 * innerinfo = "0," + gToStr(BUILDING_ROCK) + "," + gToStr(getWidth()/3) + ","+ gToStr(getHeight()/4) +",0";
+	 *
+	 */
+
+	//createBuilding(int index, int index_outerImg, float _x, float _y, std::string innerinfos) {
+	//createBuilding(bina indexi, bina resminin indexi, bina posX, bina posY, binanýn içi)
+	//örnek:
+	//createBuilding(BUILDING_SCISSORS, BUILDING_SCISSORS, buildingXs[BUILDING_SCISSORS], buildingYs[BUILDING_SCISSORS], innerinfo);
+
+
+	//BUILDING_ROCK
+	innerinfo = 	"0," +
+					gToStr(BUILDING_ROCK) + "," +
+					gToStr(getWidth()/3) + ","+
+					gToStr(getHeight()/4) +"," +
+					gToStr((1100 - img_characters[playerIndex][0].getWidth()/2)*globalscale) + "," +
+					gToStr((660 - img_characters[playerIndex][0].getHeight()/2)*globalscale) +
+					",0";
+	createBuilding(	BUILDING_ROCK,
+					BUILDING_ROCK,
+					buildingXs[BUILDING_ROCK],
+					buildingYs[BUILDING_ROCK],
+					innerinfo);
+
+	//BUILDING_PAPER
+	innerinfo = 	"0," +
+					gToStr(BUILDING_PAPER) + "," +
+					gToStr(getWidth()/2) +
+					",50,"  +
+					gToStr((930 - img_characters[playerIndex][0].getWidth()/2)*globalscale) + "," +
+					gToStr((600 - img_characters[playerIndex][0].getHeight()/2)*globalscale) +
+					",0";
+	createBuilding(	BUILDING_PAPER,
+					BUILDING_PAPER,
+					buildingXs[BUILDING_PAPER],
+					buildingYs[BUILDING_PAPER],
+					innerinfo);
+
+	//BUILDING_SCISSORS
+	innerinfo = 	"0," +
+					gToStr(BUILDING_SCISSORS) + "," +
+					gToStr(getWidth()/3) +
+					",70," +
+					gToStr((900 - img_characters[playerIndex][0].getWidth()/2)*globalscale) + "," +
+					gToStr((821 - img_characters[playerIndex][0].getHeight()/2)*globalscale) +
+					",0";
+	createBuilding(	BUILDING_SCISSORS,
+					BUILDING_SCISSORS,
+					buildingXs[BUILDING_SCISSORS],
+					buildingYs[BUILDING_SCISSORS],
+					innerinfo);
+
+	//BUILDING_TRAINING
+	innerinfo = 	"0,-1,-1,-1,"+ //interior index //NPC Index //NPC x //NPC y
+					gToStr((900 - img_characters[playerIndex][0].getWidth()/2)*globalscale) + "," +
+					gToStr((821 - img_characters[playerIndex][0].getHeight()/2)*globalscale) + "," +
+					"0";
+	createBuilding(	BUILDING_TRAINING,
+					BUILDING_TRAINING,
+					buildingXs[BUILDING_TRAINING],
+					buildingYs[BUILDING_TRAINING],
+					innerinfo);
+
+	gLogi("All buildings created successfully");
+	gLogi("Start vegetation creation");
+
+	mapBoundaries[0][X] = 50*globalscale;
+	mapBoundaries[0][Y] = 100*globalscale;
+	mapBoundaries[1][X] = img_background.getWidth() - 20*globalscale;
+	mapBoundaries[1][Y] = (img_background.getHeight() - 100)*globalscale;
+
+	float minX = mapBoundaries[0][X];
+	float minY = mapBoundaries[0][Y];
+	float maxX = mapBoundaries[1][X];
+	float maxY = mapBoundaries[1][Y];
+
+	/*Forest 1*/
+	std::vector<std::vector<float>> forest1;
+
+	std::vector<float> Frmin;
+	std::vector<float> Frmax;
+
+	Frmin.push_back(img_background.getWidth()*4/5);
+	Frmin.push_back(img_background.getHeight()*1/4);
+	Frmax.push_back(maxX);
+	Frmax.push_back(maxY);
+
+	forest1.push_back(Frmin);
+	forest1.push_back(Frmax);
+	/*Forest 1 End*/
+
+	/*Forest 2*/
+	std::vector<std::vector<float>> forest2;
+
+	Frmin.clear();
+	Frmax.clear();
+
+	Frmin.push_back(minX);
+	Frmin.push_back(minY);
+	Frmax.push_back(img_background.getWidth()/5);
+	Frmax.push_back(maxY);
+
+	forest2.push_back(Frmin);
+	forest2.push_back(Frmax);
+	/*Forest 2 End*/
+
+	forests.push_back(forest1);
+	forests.push_back(forest2);
+
+	gLogi("vegetation phase 1: (Stones and grasses)(all map)");
+	//gLogi(" min : (" + gToStr(minX) + ", " + gToStr(minY) + ")");
+	//gLogi(" max : (" + gToStr(maxX) + ", " + gToStr(maxY) + ")");
+	for(int v_type = 0; v_type < 2; v_type++) {
+		for(int v = 0; v < vegetationAmounts[v_type]; v++) {
+			int x = minX + gRandom(maxX - minX);
+			int y = minY + gRandom(maxY - minY);
+			//gLogi("randomized x and y : " + gToStr(x) + ", " + gToStr(y));
+			int design_type = v_type == GRASS ? gRandom(5.0f) : gRandom(3.0f);
+			float sizeMultipler = 0.5f + gRandom(1.0f);
+			//gLogi( "Size Multp : " + gToStr(sizeMultipler));
+			createVegetation(v_type, design_type, x, y, sizeMultipler);
+		}
+	}
+	gLogi("vegetation phase 1: Success!");
+
+	gLogi("vegetation phase 2: (Trees)(Forests)");
+	//gLogi(" min : (" + gToStr(minX) + ", " + gToStr(minY) + ")");
+	//gLogi(" max : (" + gToStr(maxX) + ", " + gToStr(maxY) + ")");
+	int v_type = TREE;
+	for(int f = 0; f<forests.size(); f++) {
+		for(int v = 0; v < vegetationAmounts[v_type]; v++) {
+			int x = forests[f][0][X] + gRandom(forests[f][1][X] - forests[f][0][X]);
+			int y = forests[f][0][Y] + gRandom(forests[f][1][Y] - forests[f][0][Y]);;
+			//gLogi("randomized x and y : " + gToStr(x) + ", " + gToStr(y));
+			int design_type = gRandom(3.0f);
+			float sizeMultipler = 0.5f + gRandom(1.0f);
+			//gLogi( "Size Multp : " + gToStr(sizeMultipler));
+			createVegetation(v_type, design_type, x, y, sizeMultipler);
+		}
+	}
+	gLogi("vegetation phase 1: Success!");
+
+
+
+	gLogi("All vegetation created successfully");
+}
+
+void GameCanvas::setCamera(int xi, int yi, int x1, int y1, int x2, int y2) {
+	prev_camx = camx;
+	prev_camy = camy;
+	prev_camx1 = camx1;
+	prev_camy1 = camy1;
+	prev_camx2 = camx2;
+	prev_camy2 = camy2;
+
+	camx = xi;
+	camy = yi;
+	camx1 = x1;
+	camy1 = y1;
+	camx2 = x2;
+	camy2 = y2;
+	
+	//(img_background.getWidth()*globalscale - getWidth()) / 2;
+	gLogi("Camera setted : {" + gToStr(xi) + ", "
+							  + gToStr(yi) + ", "
+							  + gToStr(x1) + ", "
+							  + gToStr(y1) + ", "
+							  + gToStr(x2) + ", "
+							  + gToStr(y2) + "}");
+}
+
+void GameCanvas::setCameraToPrevious() {
+	camx = prev_camx;
+	camy = prev_camy;
+	camx1 = prev_camx1;
+	camy1 = prev_camy1;
+	camx2 = prev_camx2;
+	camy2 = prev_camy2;
+}
+
+void GameCanvas::setMapBorders(float bx1, float by1, float bx2, float by2) {
+	prev_borderx1 = borderx1;
+	prev_bordery1 = bordery1;
+	prev_borderx2 = borderx2;
+	prev_bordery2 = bordery2;
+
+	borderx1 = bx1;
+	bordery1 = by1;
+	borderx2 = bx2;
+	bordery2 = by2;
+
+	gLogi("Map Borders setted : {" + gToStr(bx1) + ", "
+							  + gToStr(by1) + ", "
+							  + gToStr(bx2) + ", "
+							  + gToStr(by2) + "}");
+
+}
+
+void GameCanvas::setMapBordersToPrevious() {
+
+	borderx1 = prev_borderx1;
+	bordery1 = prev_bordery1;
+	borderx2 = prev_borderx2;
+	bordery2 = prev_bordery2;
+
+}
+
+/*[update] methods -> */
+void GameCanvas::updateCharacter() {
+	if ((keystate & KEY_W) != 0) {
+		//gLogi("W BASILIYOR");
+		//cdx = std::sin(gDegToRad(mrot)) * cspeed; // cdx - cdy
+		//cdy = -std::cos(gDegToRad(mrot)) * cspeed;
+		cdy = -1 * cspeed;
+
+		//gLogi("cdx : " + gToStr(cdx));
+		//gLogi("cdy : " + gToStr(cdy));
+
+	}
+	else if ((keystate & KEY_S) != 0) {
+		//gLogi("S BASILIYOR");
+		//cdx = -std::sin(gDegToRad(mrot)) * cspeed;
+		//cdy = std::cos(gDegToRad(mrot)) * cspeed;
+		cdy = 1 * cspeed;
+		//gLogi("cdx : " + gToStr(cdx));
+		//gLogi("cdy : " + gToStr(cdy));
+
+	}
+
+	// Ã‡aprazlara hareket edebilmek iÃ§in A ve D'yi W ve S'ten ayÄ±rdÄ±k.
+	if ((keystate & KEY_A) != 0) {
+		//gLogi("A BASILIYOR");
+		//cdx += -std::cos(gDegToRad(mrot)) * cspeed;
+		//cdy += -std::sin(gDegToRad(mrot)) * cspeed;
+		cdx = -1 * cspeed;
+		//gLogi("cdx : " + gToStr(cdx));
+		//gLogi("cdy : " + gToStr(cdy));
+
+	}
+	else if ((keystate & KEY_D) != 0) {
+		//gLogi("D BASILIYOR");
+		//cdx += std::cos(gDegToRad(mrot)) * cspeed;
+		//cdy += std::sin(gDegToRad(mrot)) * cspeed;
+		cdx = 1 * cspeed;
+		//gLogi("cdx : " + gToStr(cdx));
+		//gLogi("cdy : " + gToStr(cdy));
+
+	}
+
+	//Character movement
+	if ( cdx != 0.0f || cdy != 0.0f ) {
+		characterframecounter++;
+		characterframecounterlimit = 12 / cspeed;
+		if ( characterframecounter >= characterframecounterlimit ) {
+			if (characterframeno >= characterframenum){
+				characterframeno = 0;
+			}
+			characterframecounter = 0;
+		}
+	}
+
+/* Ateþ etme template'i, gelecekteki update'ler için altyapý.
+	//root->soundcharacterwalk.stop();
+	if(isFiring) {
+
+		float mdx = std::sin(gDegToRad(mrot + muzzle_dangle)) * muzzle_distance - (bulletimage.getWidth() / 2);
+		float mdy = -std::cos(gDegToRad(mrot + muzzle_dangle)) * muzzle_distance - (bulletimage.getHeight() / 2);
+		float cbx = cx + (character[0].getWidth() / 2) + mdx + camx;
+		float cby = cy + (character[0].getHeight() / 2) + mdy + camy;
+		float dx = std::sin(gDegToRad(mrot)) * (bulletspeed);
+		float dy = -std::cos(gDegToRad(mrot)) * (bulletspeed);
+		float brot = mrot;
+		int sender = BULLET_SENDER_CHARACTER;
+		generateBullet(cbx, cby, dx, dy, brot, sender);
+	}
+*/
+
+	cx += cdx;
+	cy += cdy;
+	updateCamera();
+}
+
+void GameCanvas::updateCamera() {
+
+	if (cx - (img_characterBases[0].getWidth()/2)*globalscale < camx1 || cx + (img_characterBases[0].getWidth()/2)*globalscale > camx2) {
+		cx -= cdx;
+		camx += cdx;
+		if (camx < 0) {
+			camx = 0;
+			camx1 = 0;
+		}else {
+			camx1 = borderx1;
+		}
+		if (camx + getWidth() >= img_background.getWidth()) {
+			camx = img_background.getWidth() - getWidth();
+			camx2 = getWidth() - img_characterBases[0].getWidth()*globalscale; //*globalscale
+		} else {
+			camx2 = getWidth() - img_characterBases[0].getWidth()*globalscale - 100; //(getWidth() * 7) >> 3;
+		}
+	}
+
+	if (cy - (img_characterBases[0].getHeight()/2)*globalscale  < camy1 || cy + (img_characterBases[0].getHeight()/2)*globalscale > camy2) {
+		cy -= cdy;
+		camy += cdy;
+		if (camy < 0) {
+			camy = 0;
+			camy1 = 0;
+		}else {
+			camy1 = bordery1; // >> 3;
+		}
+		if (camy + getHeight() >= img_background.getHeight()) {
+			camy = img_background.getHeight() - getHeight();
+			camy2 = getHeight() - img_characterBases[0].getHeight()*globalscale; //
+		} else {
+			camy2 = getHeight() - img_characterBases[0].getHeight()*globalscale - 100; //(getHeight() * 7) >> 3;
+		}
+	}
+//TODO BURADA KALDIN YANLIÞ YAPTIN BUNU DÜZELT. 05.11.2022
+	if (cx - img_characterBases[0].getWidth() > camx2) {
+		int cfx = cx - camx2;
+		cx -= cfx*1.2f;
+		camx += cfx*1.2f;
+	}
+
+	if (cx < camx1) {
+		int cfx = camx1 - cx;
+		cx += cfx*1.2f;
+		camx -= cfx*1.2f;
+	}
+
+	if (cy - img_characterBases[0].getHeight() > camy2) { //*globalscale
+		int cfy = cy - camy2;
+		cy -= cfy*1.2f;
+		camy += cfy*1.2f;
+	}
+
+	if (cy < camy1) {
+		int cfy = camy1 - cy;
+		cy += cfy*1.2f;
+		camy -= cfy*1.2f;
+	}
+
+	//delta degerlerini sifirliyoruz
+	cdx = 0;
+	cdy = 0;
+}
+
+void GameCanvas::updateMap() {
+
+}
+
+/* [draw] Methods -> */
+void GameCanvas::drawLoad() {
+
+	img_blueprint.draw(0, 0, globalscale);
+	if(framecounter % 15 == 0) {
+		switch(loadingtext[0].length()) {
+		case 7: case 8: case 9:
+			loadingtext[0] += ".";
+			break;
+		case 10:
+			loadingtext[0] = "LOADING.";
+			break;
+		}
+	}
+	//int x = (getWidth() - font[font_LOAD1].getStringWidth(loadingtext[0]))/2;
+	//	gLogi(gToStr(x));
+	if(DEBUG) {
+		fonts[font_LOAD1].drawText(loadingtext[0],  getWidth()/2 - 100, getHeight()*4/5);
+		fonts[font_LOAD2].drawText(loadingtext[1],  getWidth()/2 - 200, getHeight()*4/5 + fontsizes[0]);
+	}
+}
+
+void GameCanvas::drawGame() {
+	//gLogi("568");
+	drawMapBG();
+	//gLogi("576");
+	drawMid();
+	//gLogi("572");
+	drawCharacter();
+	//gLogi("574");
+	drawMapFG();
+	//gLogi("576");
+}
+
+void GameCanvas::drawMapBG() {
+	if(game_map == IN_MAP) { // draw main map background
+		//img_background.draw(-20,-20, globalscale);
+		//gLogi("drawMapBg::game_map == IN_MAP");
+		//gLogi("drawing game_map : IN_MAP");
+		img_background.drawSub(0, 0, getWidth(), getHeight(), camx, camy, getWidth(), getHeight());
+	}
+	if(game_map == IN_BUILDING){ // draw building background
+
+		if(buildingPressed == Button_Training) {
+			imgs_Training_Ground[0].draw(tg_coordinates[0], tg_coordinates[1]);
+		}
+		else {
+			//gLogi("img_interior[buildingPressed(" + gToStr(buildingPressed) + ")][currentInterior[0](" + gToStr(currentInterior[0]) + ")]");
+			//gLogi("img_interior[" + gToStr(buildingPressed) + "][" + gToStr(currentInterior[0]) + "]].getfilename : " + gToStr(img_interior[buildingPressed][currentInterior[0]] .getFilename()));
+			//gLogi("drawMapBg::game_map == IN_BUILDING");
+
+			gLogi("drawing : img_interior[buildingPressed(" + gToStr(buildingPressed) + ")][currentInterior[0](" + gToStr(currentInterior[0]) + ")]\n " + gToStr(img_interior[buildingPressed][currentInterior[0]].getFilename()));
+
+
+			img_interior[buildingPressed][currentInterior[0]].draw(
+					(getWidth() - img_interior[buildingPressed][currentInterior[0]].getWidth() * globalscale) / 2,
+					(getHeight() - img_interior[buildingPressed][currentInterior[0]].getHeight()* globalscale) / 2 ,
+					globalscale);
+			gLogi("drawed interior");
+		}
+	}
+	//img_props[SPAWN_POINT].draw(propXs[SPAWN_POINT], propYs[SPAWN_POINT]);
+}
+
+void GameCanvas::createVegetation(int veg_type, int design_type, float x, float y, float sizeMultipler) {
+	gLogi("createVegetation() is working");
+	std::vector<float> tmpVeg;
+	tmpVeg.push_back(x);
+	tmpVeg.push_back(y);
+	tmpVeg.push_back(design_type);
+	tmpVeg.push_back(sizeMultipler);
+
+	gLogi("tmpVeg created successfully!");
+	vegetations[veg_type].push_back(tmpVeg);
+	gLogi("createVegetation() is worked successfully!");
+}
+
+void GameCanvas::drawVegetation() {
+	int c = 255/1.1f;
+	// c = 	color value, minimum 255/1.1f oranýnda genel temadan daha koyu olmasýný saðlýyor
+
+	//renderer->setColor(c,c,c,255);
+
+	for (int v_type = 0; v_type < vegetations.size(); v_type++) {
+
+		for (int v = 0; v < vegetations[v_type].size(); v++) {
+
+			//gLogi("drawing veg [" + gToStr(v_type) + "][" + gToStr(v) + "]");
+			//gToInt(gToStr(vegetations[v_type][v][VEG_DES_TYPE]))
+			float dx = (img_ENVs[v_type][vegetations[v_type][v][2]].getWidth()*vegetations[v_type][v][3] * globalscale)/2;
+			float dy = (img_ENVs[v_type][vegetations[v_type][v][2]].getHeight()*vegetations[v_type][v][3] * globalscale)/2;
+
+			img_ENVs[v_type][vegetations[v_type][v][2]].drawDetailed(
+				vegetations[v_type][v][X] - camx - dx,
+				vegetations[v_type][v][Y] - camy - dy,
+				vegetations[v_type][v][3] * globalscale,
+				c,c,c
+			);
+			if(DEBUG) {
+				fonts[font_INGAME].drawText(
+					"Type: " + gToStr(v_type) + "|" + gToStr(vegetations[v_type][v][VEG_DES_TYPE]),
+					vegetations[v_type][v][X] - dx - camx,
+					(vegetations[v_type][v][Y] + img_ENVs[v_type][vegetations[v_type][v][VEG_DES_TYPE]].getHeight()* vegetations[v_type][v][3]*globalscale) +5 - camy - dy,
+					128, 255, 128
+				);
+			}
+		}
+	}
+	//renderer->setColor(255,255,255,255);
+
+
+/*
+	img_ENVs[GRASS][0].draw(900 - camx, 1050 - camy);
+	img_ENVs[TREE][0].draw(1100 - camx, 1050 - camy);
+	img_ENVs[STONE][0].draw(1300 - camx, 1050 - camy);
+
+	fonts[font_LOAD1].drawText(
+						"TEST AREA : ",
+						900 - camx,
+						1000 - camy,
+						128, 220, 255
+					);
+*/
+/*
+	img_ENVs[GRASS][2].draw(10 - camx, 10 - camy, globalscale);
+	img_ENVs[GRASS][1].draw(15 - camx, 15 - camy, globalscale);
+	img_ENVs[GRASS][3].draw(20 - camx, 20- camy, globalscale);
+
+	img_ENVs[TREE][2].draw(1000 - camx, 1050 - camy, globalscale);
+	img_ENVs[TREE][0].draw(900 - camx, 1050 - camy, globalscale);
+	img_ENVs[TREE][1].draw(800 - camx, 1050 - camy, globalscale);
+
+	img_ENVs[STONE][2].draw(2000 - camx, 1050 - camy, globalscale);
+	img_ENVs[STONE][0].draw(3000 - camx, 1050 - camy, globalscale);
+	img_ENVs[STONE][1].draw(2500 - camx, 1050 - camy, globalscale);
+
+	//gLogi("img_ENVs[0][0].getFileName " + gToStr(img_ENVs[GRASS][0].getFilename()));
+*/
+}
+/*
+std::vector<std::vector<float>> GameCanvas::scatterRandPointsOnGeometry(std::vector<float[2]> boundaries, int pointAmount) {
+	std::vector<std::vector<float>> points;
+	float minX = boundaries[0][0];
+	float maxX = boundaries[1][0];
+	float minY = boundaries[0][1];
+	float maxY = boundaries[1][1];
+
+	for (int i = 0; i < pointAmount; i++) {
+		std::vector<float> tmpCoord;
+		tmpCoord.push_back(minX + gRandom(maxX - minX));
+		tmpCoord.push_back(minY + gRandom(maxY - minY));
+		points.push_back(tmpCoord);
+	}
+
+	return points;
+}
+*/
+
+void GameCanvas::drawMid() {
+	//healer
+	if(game_map == IN_MAP) { // draw props and buildings
+		img_props[SPAWN_POINT].draw(propXs[SPAWN_POINT] - camx, propYs[SPAWN_POINT] - camy, globalscale);
+		drawBuildings();
+		drawVegetation();
+
+		for(int buildingIndex = 0; buildingIndex < buildingAmount; buildingIndex++) {
+			//img_buildings[buildingIndex].draw(buildingXs[buildingIndex] - camx, buildingYs[buildingIndex] - camy, globalscale);
+			int initx = (img_buildings[buildingIndex].getWidth()/2)*globalscale;
+			int _x = buildingXs[buildingIndex] - camx + initx;
+			int _y = buildingYs[buildingIndex] - 10*globalscale - camy;
+
+			if(buildingIndex == BUILDING_ROCK) {
+				fonts[font_INGAME].drawText("ARMORY SHOP", _x - fonts[font_INGAME].getStringWidth("ARMORY SHOP")/2 , _y, 255, 220, 220);
+			} else if (buildingIndex == BUILDING_PAPER) {
+				fonts[font_INGAME].drawText("POTION SHOP", _x - fonts[font_INGAME].getStringWidth("POTION SHOP")/2, _y, 255, 220, 220);
+			} else if (buildingIndex == BUILDING_SCISSORS) {
+				fonts[font_INGAME].drawText("ASSASSINATION BUILDING", _x - fonts[font_INGAME].getStringWidth("ASSASSINATION BUILDING")/2, _y, 255, 220, 220);
+			} else if (buildingIndex == BUILDING_TRAINING) {
+				fonts[font_INGAME].drawText("TRAINING GROUNDS", _x - fonts[font_INGAME].getStringWidth("TRAINING GROUNDS")/2, _y, 255, 220, 220);
+			}
+
+		}
+
+	}
+
+	if(game_map == IN_BUILDING){ // draw NPC
+		if(buildingPressed == Button_Training) {
+
+		}
+		else {
+			if (currentInterior[1] != -1) { //check npc index
+				gLogi("NPC : BUILDING PRESSED : " + gToStr(buildingPressed));
+
+				gLogi("img_NPCs[currentInterior[1](" + gToStr(currentInterior[1]) + ")]");
+				gLogi("img_NPCs[" + gToStr(currentInterior[1]) + "].getfilename : " + gToStr(img_NPCs[currentInterior[1]].getFilename()));
+
+				img_NPCs[currentInterior[1]].draw(currentInterior[2], currentInterior[3], globalscale);
+			}
+		}
+	}
+
+
+	//INGAME butonlarý burada çizdiriyoruz, GUI butonlarý ise drawGUI/drawButtons'ta çizdiriyoruz
+	for(int i = 0; i < buttons.size(); i++) {
+		if(buttons[i][10] == 1) { //visibility check
+			if (buttons[i][9] == BUTTON_INGAME) {
+				drawButton(buttonTexts[i], buttons[i][0] - camx, buttons[i][1] - camy, buttons[i][2], buttons[i][3], buttons[i][4], buttons[i][5], buttons[i][6]);
+			}
+		}
+	}
+}
+
+void GameCanvas::drawCharacter() {
+/*
+	font[font_INGAME].drawText("Player(ID:0)", cx + (font[font_INGAME].getStringWidth("Player(ID:0)")/2), cy - fontsizes[font_INGAME]*3.6f - (img_characters[playerIndex][0].getHeight()/2));
+	font[font_INGAME].drawText("cx:"+gToStr(cx)+"|cy:"+gToStr(cy), cx + (font[font_INGAME].getStringWidth("cx:"+gToStr(cx)+"|cy:"+gToStr(cy))/2), cy - fontsizes[font_INGAME]*2.4f - (img_characters[playerIndex][0].getHeight()/2),20,255,20);
+	font[font_INGAME].drawText("RaceIndex:"+gToStr(characters[playerIndex][5]), cx + (font[font_INGAME].getStringWidth("RaceIndex:2")/2), cy - fontsizes[font_INGAME]*1.2f - (img_characters[playerIndex][0].getHeight()/2));
+*/
+	/*
+	std::string str;
+	int initx = (img_characters[playerIndex][0].getWidth()/2)* globalscale ;
+	str = "Player(ID:" + gToStr(playerIndex) + ")";
+	font[font_INGAME].drawText(str, cx - (font[font_INGAME].getStringWidth(str)/2) + initx, cy - fontsizes[font_INGAME]*4.5);
+	str = "RaceIndex:"+gToStr(characters[playerIndex][5]);
+	font[font_INGAME].drawText(str, cx - (font[font_INGAME].getStringWidth(str)/2) + initx, cy - fontsizes[font_INGAME]*3);
+	str = "cx+camx:"+gToStr(cx+camx)+"|cy+camy:"+gToStr(cy+camy);
+	font[font_INGAME].drawText(str, cx - (font[font_INGAME].getStringWidth(str)/2) + initx, cy - fontsizes[font_INGAME]*1.5,20,255,20);
+
+	img_characters[playerIndex][0].draw(cx, cy, globalscale); //void draw(int x, int y, int w, int h, float rotate);
+*/
+
+	std::string str;
+	int initx = (img_characterBases[0].getWidth()/2)* globalscale * scalelevels[characterscalelevel];
+	if(DEBUG) {
+		str = "Player(ID:" + gToStr(playerIndex) + ")";
+		fonts[font_INGAME].drawText(str, cx - (fonts[font_INGAME].getStringWidth(str)/2) + initx, cy - fontsizes[font_INGAME]*4.5);
+		str = "RaceIndex:"+gToStr(characters[playerIndex][5]);
+		fonts[font_INGAME].drawText(str, cx - (fonts[font_INGAME].getStringWidth(str)/2) + initx, cy - fontsizes[font_INGAME]*3);
+		str = "cx+camx:"+gToStr(cx+camx)+"|cy+camy:"+gToStr(cy+camy);
+		fonts[font_INGAME].drawText(str, cx - (fonts[font_INGAME].getStringWidth(str)/2) + initx, cy - fontsizes[font_INGAME]*1.5,20,255,20);
+	}
+	//gLogi("drawcharacter(7)");
+	//gLogi("playerIndex : " + gToStr(playerIndex));
+	//gLogi("path : " + gToStr(img_characters[playerIndex][0].getFullPath()));
+	//gLogi("filename : " + gToStr(img_characters[playerIndex][0].getFilename()));
+	//gLogi("drawcharacter(8)");
+	img_characters[playerIndex][0].draw(cx, cy, globalscale * scalelevels[characterscalelevel]); //void draw(int x, int y, int w, int h, float rotate);
+	//gLogi("drawcharacter succes");
+}
+
+void GameCanvas::drawMapFG() {
+
+	if(game_map == IN_BUILDING){
+		if(buildingPressed == Button_Training) {
+			if(checkCollision(cx, cy, cx + (img_characters[playerIndex][0].getWidth() * globalscale), cy + (img_characters[playerIndex][0].getHeight() * globalscale),
+							tg_coordinates[2] + 326*globalscale, tg_coordinates[3] + 220*globalscale, tg_coordinates[2] - 326*globalscale, tg_coordinates[3] - 220*globalscale)) {
+				imgs_Training_Ground[1].draw(tg_coordinates[2], tg_coordinates[3]);
+			}
+			else {
+				imgs_Training_Ground[2].draw(tg_coordinates[2], tg_coordinates[3]);
+			}
+		}
+		else {
+			gLogi("before drawing props");
+			gLogi("currentIntreior[6] : " + gToStr(currentInterior[6]));
+			if(currentInterior[6] > 0) {
+				int index = 7;
+				for(int i = 0; i < currentInterior[6]; i++) {
+					img_props[currentInterior[i + index]].draw(currentInterior[i + index + 1], currentInterior[i + index + 2]);
+					index += 2;
+				}
+				/*
+				 * bu for dongusunu bu sekilde kurduk cunku :
+				 * currentInterior (.h'deki 70. satýrda ornekteki adiyla 'innerinfo')
+				 * bize proplari vermeye  5. index'te basliyor,  6. index X,  7. index Y
+				 * sonraki prop icin ise  8. index prop_imgInd,  9. index X, 10. index Y
+				 * sonraki prop icin ise 11. index prop_imgInd, 12. index X, 13. index Y
+				 * dolayisiyla for dongusu currentInterior[4](prop_amount)'a gore 1er
+				 * ilerlerken, x ve y'nin yarattigi 2 indexlik farki bu 'index' degiskeni
+				 * kapatmis oluyor index += 2; satiri ile.
+				 */
+			}
+			gLogi("after drawing props");
+		}
+	}
+
+}
+
+void GameCanvas::drawGUI() {
+	drawButtons();
+}
+
+void GameCanvas::keyPressed(int key) {
+	//gLogi("GameCanvas") << "keyPressed:" << key;
+	int pressed = 0;
+	switch (key){
+		case 87:
+			pressed = KEY_W;
+			gLogi("W");
+			break;
+		case 65:
+			pressed = KEY_A;
+			break;
+		case 83:
+			pressed = KEY_S;
+			break;
+		case 68:
+			pressed = KEY_D;
+			break;
+		case 256:
+			if(game_status == PAUSED) {
+				game_status = PLAYING;
+			}
+			else if (game_status == PLAYING) {
+				game_status = PAUSED;
+			}
+			break;
+		case 340:
+				cspeed += 4.0f; // Shift tusuna basildiginda karakter hizini artiriyoruz.
+			break;
+		default:
+			break;
+	}
+	keystate |= pressed; // bitwise '+='
+
+}
+
+void GameCanvas::keyReleased(int key) {
+//	gLogi("GameCanvas") << "keyReleased:" << key;
+	int released = 0;
+	switch (key){
+		case 87:
+			released = KEY_W;
+			break;
+		case 65:
+			released = KEY_A;
+			break;
+		case 83:
+			released = KEY_S;
+			break;
+		case 68:
+			released = KEY_D;
+			break;
+		case 340:
+			cspeed = 2.0f;
+			break;
+		default:
+			break;
+	}
+	keystate &= ~released; // bitwise'da '-='
+}
+
+void GameCanvas::charPressed(unsigned int codepoint) {
+//	gLogi("GameCanvas") << "charPressed:" << gCodepointToStr(codepoint);
+}
+
+void GameCanvas::mouseMoved(int x, int y) {
+//	gLogi("GameCanvas") << "mouseMoved" << ", x:" << x << ", y:" << y;
+	mousex = x; //A ve D'ye basildiginda mouse hareket ettirmeye gerek duymadan etrafÃ½ndan donmek icin...
+	mousey = y;
+}
+
+void GameCanvas::mouseDragged(int x, int y, int button) {
+//	gLogi("GameCanvas") << "mouseDragged" << ", x:" << x << ", y:" << y << ", b:" << button;
+	mousex = x;
+	mousey = y;
+	clickx = mousex;
+	clicky = mousey;
+}
+
+void GameCanvas::mousePressed(int x, int y, int button) {
+	mouseHold = true;
+	mousex = x;
+	mousey = y;
+	clickx = mousex;
+	clicky = mousey;
+	crot = (mousex < cx) ? -1 : 1;
+}
+
+void GameCanvas::mouseReleased(int x, int y, int button) {
+//	gLogi("GameCanvas") << "mouseReleased" << ", button:" << button;
+	mouseHold = false;
+	mousex = x;
+	mousey = y;
+	crot = (mousex < cx) ? -1 : 1;
+
+	mouseHoldedFor_frames = 0;
+	mouseHoldedFor_seconds = 0;
+
+	for(int b = 0; b < buttons.size(); b++) {
+		if(buttons[b][10] == 1) {
+			gLogi("Visible button" + gToStr(b));
+			if(buttons[b][9] == BUTTON_INGAME) {
+				if(x > buttons[b][0] - camx && y > buttons[b][1] - camy && x < buttons[b][7] - camx && y < buttons[b][8] - camy) {
+					buttonPressed = b;
+					gLogi("buttonPressed = " + gToStr(b));
+				}
+			}
+			if(buttons[b][9] == BUTTON_GUI) {
+				if(x > buttons[b][0] && y > buttons[b][1] && x < buttons[b][7] && y < buttons[b][8]) {
+					buttonPressed = b;
+					gLogi("buttonPressed = " + gToStr(b));
+				}
+			}
+		}
+	}
+	//gLogi("building.size " + gToStr(buildings.size())); // TODO: burada kaldin binalari dumduz cizdirdigin icin calismiyor, onun yerine olusturdugun createBuilding methodunu kullan!
+	for(int b = 0; b < buildings.size(); b++) {
+		if(x + camx > gToInt(buildings[b][2])&&
+		   y + camy > gToInt(buildings[b][3]) &&
+		   x + camx < (gToInt(buildings[b][2]) + img_buildings[gToInt(buildings[b][1])].getWidth()*globalscale) &&
+		   y + camy < (gToInt(buildings[b][3])) + img_buildings[gToInt(buildings[b][1])].getHeight()*globalscale){
+			buildingPressed = b;
+			gLogi("buildingPressed = " + gToStr(b));
+		}
+	}
+}
+
+void GameCanvas::mouseScrolled(int x, int y) {
+//	gLogi("GameCanvas") << "mouseScrolled" << ", x:" << x << ", y:" << y;
+}
+
+void GameCanvas::mouseEntered() {
+}
+
+void GameCanvas::mouseExited() {
+}
+
+void GameCanvas::windowResized(int w, int h) {
+}
+
+void GameCanvas::showNotify() {
+
+}
+
+void GameCanvas::hideNotify() {
+
+}
+
+bool GameCanvas::checkCollision(int xLeft1, int yUp1, int xRight1, int yBottom1, int xLeft2, int yUp2, int xRight2, int yBottom2) {
+	if(xLeft1 < xRight2 && xRight1 > xLeft2 && yBottom1 > yUp2 && yUp1 < yBottom2) {
+		return true;
+	}
+	return false;
+}
+
+void GameCanvas::createButton(std::string btntext, int btnx, int btny, int btntype, int btnR, int btnG, int btnB, int texttype, int btnLocation, bool visibility) {
+	buttonTexts.push_back(btntext);
+	std::vector<int> tmpbtn;
+	tmpbtn.push_back(btnx);				// btn[0] -> x
+	tmpbtn.push_back(btny);				// btn[1] -> y
+	tmpbtn.push_back(btntype);			// btn[2] -> btntype (btnimg[btntype])
+	tmpbtn.push_back(btnR);				// btn[3] -> R (Text.setColor(R,g,b))
+	tmpbtn.push_back(btnG);				// btn[4] -> G (Text.setColor(r,G,b))
+	tmpbtn.push_back(btnB);				// btn[5] -> B (Text.setColor(r,g,B))
+	tmpbtn.push_back(texttype);			// btn[6] -> text font (fonts[texttype])
+	tmpbtn.push_back(btnx + img_button[btntype].getWidth());	// btn[7] -> btnX2
+	tmpbtn.push_back(btny + img_button[btntype].getHeight());	// btn[8] -> btnY2
+	tmpbtn.push_back(btnLocation);		// btn[9] -> btnCanvas
+	if(visibility) {
+		tmpbtn.push_back(1);
+	} else {
+		tmpbtn.push_back(0);
+	}
+
+	buttons.push_back(tmpbtn);
+}
+
+void GameCanvas::updateButtons() {
+
+	for(int b = 0; b < buttons.size(); b++) {
+		if(buttons[b][9] == BUTTON_INGAME) {
+			if (game_map == IN_MAP
+			&& (cx > buttons[b][0] - camx - 100*globalscale
+			&&  cy > buttons[b][1] - camy - 100*globalscale
+			&&  cx < buttons[b][7] - camx + 50*globalscale
+			&&  cy < buttons[b][8] - camy*globalscale )) { //zortladý çöz bunu
+				gLogi("Character is near to the " + gToStr(b) + ". button");
+				if(buttons[b][10] == 0) {
+					buttons[b][10] = 1;
+				}
+			}
+			else if(buttons[b][10] == 1) {
+						buttons[b][10] = 0;
+			}
+		}
+	}
+}
+
+
+void GameCanvas::drawButton(std::string btntext, int btnx, int btny, int btntype, int btnR, int btnG, int btnB, int texttype) {
+	//gLogi("MENUCANVAS::DRAWBUTTON -> START");
+	img_button[btntype].draw(btnx, btny, globalscale);
+	//gLogi("draw emptybtns : [PASSED]");
+	fonts[texttype].drawText(btntext, btnx + (((img_button[btntype].getWidth() * globalscale)- fonts[texttype].getStringWidth(btntext)) / 2) , btny + (img_button[btntype].getHeight() * globalscale)/2 + 3, btnR/3,btnG/3,btnB/3);
+	//gLogi("draw savetextshadow : [PASSED]");
+	fonts[texttype].drawText(btntext, btnx + (((img_button[btntype].getWidth() * globalscale) - fonts[texttype].getStringWidth(btntext)) / 2) - 1, btny + (img_button[btntype].getHeight() * globalscale)/2 + 1, btnR, btnG, btnB);
+	//gLogi("draw savetext : [PASSED]");
+}
+
+void GameCanvas::drawButtons() {
+
+	for(int i = 0; i < buttons.size(); i++) {
+		if(buttons[i][10] == 1) { //visibility check
+			if(buttons[i][9] == BUTTON_GUI) {
+				drawButton(buttonTexts[i], buttons[i][0], buttons[i][1], buttons[i][2], buttons[i][3], buttons[i][4], buttons[i][5], buttons[i][6]);
+			}
+			/* bu playerin vs üstünü kapatmasýn diye bunu drawGame'de çizdiricez
+			else if (buttons[i][9] == BUTTON_INGAME) {
+				drawButton(buttonTexts[i], buttons[i][0] - camx, buttons[i][1] - camy, buttons[i][2], buttons[i][3], buttons[i][4], buttons[i][5], buttons[i][6]);
+			}
+			*/
+		}
+	}
+
+	if(game_map == IN_BUILDING) {
+		//gLogi("drawing exitbuilding on : " + gToStr(buttons[Button_ExitBuilding][0]) + ""  + gToStr(buttons[Button_ExitBuilding][1]));
+		drawButton(
+				buttonTexts[Button_ExitBuilding],
+				buttons[Button_ExitBuilding][0],
+				buttons[Button_ExitBuilding][1],
+				buttons[Button_ExitBuilding][2],
+				buttons[Button_ExitBuilding][3],
+				buttons[Button_ExitBuilding][4],
+				buttons[Button_ExitBuilding][5],
+				buttons[Button_ExitBuilding][6]
+		);
+	}
+
+}
+
+void GameCanvas::listener() {
+	if(buttonPressed != -1) {
+
+		if(buttonPressed == Button_ExitBuilding) {
+			game_map = IN_MAP;
+			gLogi("Button_ExitBuilding Game_map = " + gToStr(game_map));
+			gLogi("Button Pressed : " + gToStr(buttonPressed));
+			gLogi("debug 954");
+
+			characterscalelevel = 2;
+			gLogi("debug 957");
+
+			cx = gToInt(buildings[buildingPressed][2]) + img_buildings[buildingPressed].getWidth()/2*globalscale - camx;
+			gLogi("debug 960");
+
+			cy = gToInt(buildings[buildingPressed][3]) + img_buildings[buildingPressed].getHeight()*globalscale - camy;
+			gLogi("debug 963");
+
+			buildingPressed = -1;
+			currentInterior.clear();
+			//currentInterior.clear();
+			buttons[Button_ExitBuilding][10] = 0;
+			gLogi("buttonExitBuilding listener : Complete");
+		}
+
+		if(buttonPressed == Button_Armory || buttonPressed == Button_Potionary || buttonPressed == Button_Assassin) {
+			buildingPressed = buttonPressed - 1;
+		    std::vector<std::string> innerInfo = gSplitString(buildings[buttonPressed - 1][4], ",");
+
+		    gLogi("building : " + gToStr(buildingPressed));
+		    gLogi("innerInfo1 : " + buildings[buttonPressed - 1][4]);
+		    gLogi("innerInfo2 : (parced)");
+		    for(std::string s : innerInfo) {
+		    	gLogi( s + ",");
+		    }
+
+			if(innerInfo[0] != "-1") {
+				game_map = IN_BUILDING;
+				//gLogi("BuildingPressed Game_map = " + gToStr(game_map));
+
+				//gLogi("Building Pressed : " + gToStr(buildingPressed));
+				//gLogi("Building Pressed : " + gToStr(buildings[buildingPressed][0]));
+				for(int i = 0; i < innerInfo.size(); i++) {
+					//gLogi("CurrentInreior["+gToStr(i)+"] : " + gToStr(gToInt(innerInfo[i])));
+					currentInterior.push_back(gToInt(innerInfo[i]));
+				}
+
+				gLogi("\ncurrentInterior : ");
+			    for(int i : currentInterior) {
+			    	gLogi( gToStr(i) + ",");
+			    }
+
+				gLogi("cx = currentInterior[4](" + gToStr(currentInterior[4]) + ")" );
+				gLogi("cy = currentInterior[5](" + gToStr(currentInterior[5]) + ")");
+				characterscalelevel = 6;
+				cx = currentInterior[4];
+				cy = currentInterior[5];
+				buttons[Button_ExitBuilding][10] = 1;
+				gLogi("#DEBUG CHECK YENI");
+			}
+			/*
+			std::vector<std::string> innerInfo = gSplitString(buildings[buildingPressed][4], ",");
+			if(innerInfo[0] != "-1") {
+				gLogi("before currentInterior.clear()");
+				if(currentInterior.size() > 0) {
+					currentInterior.clear();
+				}
+				game_map = IN_BUILDING;
+				gLogi("after currentInterior.clear()");
+
+				gLogi("BuildingPressed Game_map = " + gToStr(game_map));
+
+				//gLogi("Building Pressed : " + gToStr(buildingPressed));
+				//gLogi("Building Pressed : " + gToStr(buildings[buildingPressed][0]));
+				for(int i = 0; i < innerInfo.size(); i++) {
+					//gLogi("CurrentInreior["+gToStr(i)+"] : " + gToStr(gToInt(innerInfo[i])));
+					currentInterior.push_back(gToInt(innerInfo[i]));
+				}
+				gLogi("cx = currentInterior[4](" + gToStr(currentInterior[4]) + ")" );
+				gLogi("cy = currentInterior[5](" + gToStr(currentInterior[5]) + ")");
+				characterscalelevel = 6;
+				cx = currentInterior[4];
+				cy = currentInterior[5];
+				buttons[Button_ExitBuilding][10] = 1;
+				gLogi("#DEBUG CHECK YENI");
+			}
+			*/
+		}
+	buttonPressed = -1;
+	}
+
+	if (buttonPressed == Button_Training) { //different interior than other buildings (2 pieces)
+		buildingPressed == Button_Training;
+		game_map = IN_BUILDING;
+		std::vector<std::string> innerInfo = gSplitString(buildings[buttonPressed - 1][4], ",");
+		for(int i = 0; i < innerInfo.size(); i++) {
+			//gLogi("CurrentInreior["+gToStr(i)+"] : " + gToStr(gToInt(innerInfo[i])));
+			currentInterior.push_back(gToInt(innerInfo[i]));
+		}
+
+		characterscalelevel = 6;
+		cx = currentInterior[4];
+		cy = currentInterior[5];
+		buttons[Button_ExitBuilding][10] = 1;
+	}
+
+/*
+	if(buildingPressed != -1) {
+
+	    std::vector<std::string> innerInfo = gSplitString(buildings[buildingPressed][4], ",");
+		if(innerInfo[0] != "-1") {
+			game_map = IN_BUILDING;
+			gLogi("BuildingPressed Game_map = " + gToStr(game_map));
+
+			//gLogi("Building Pressed : " + gToStr(buildingPressed));
+			//gLogi("Building Pressed : " + gToStr(buildings[buildingPressed][0]));
+			for(int i = 0; i < innerInfo.size(); i++) {
+				//gLogi("CurrentInreior["+gToStr(i)+"] : " + gToStr(gToInt(innerInfo[i])));
+				currentInterior.push_back(gToInt(innerInfo[i]));
+			}
+			gLogi("cx = currentInterior[4](" + gToStr(currentInterior[4]) + ")" );
+			gLogi("cy = currentInterior[5](" + gToStr(currentInterior[5]) + ")");
+			characterscalelevel = 6;
+			cx = currentInterior[4];
+			cy = currentInterior[5];
+			buttons[Button_ExitBuilding][10] = 1;
+			gLogi("#DEBUG CHECK YENI");
+		}
+	}
+*/
+
+}
+
+void GameCanvas::createBuilding(int index, int index_outerImg, float _x, float _y, std::string innerinfos) {
+	std::vector<std::string> tmpBuilding;
+	//float x = _x - img_buildings[index_outerImg].getWidth()/2;
+	//float y = _y - img_buildings[index_outerImg].getHeight()/2;
+	tmpBuilding.push_back(gToStr(index));
+	tmpBuilding.push_back(gToStr(index_outerImg));
+	tmpBuilding.push_back(gToStr(_x));
+	tmpBuilding.push_back(gToStr(_y));
+	tmpBuilding.push_back(innerinfos);
+	buildings.push_back(tmpBuilding);
+}
+
+void GameCanvas::drawBuildings() {
+	for(int b = 0; b < buildings.size(); b++) {
+		img_buildings[gToInt(buildings[b][1])].draw(gToInt(buildings[b][2]) - camx, gToInt(buildings[b][3]) - camy, globalscale);
+	}
+}

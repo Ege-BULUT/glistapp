@@ -1,0 +1,697 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "libGlistEngine.dll"
+		},
+		{
+			"path" : "libGlistEngine.dll.a"
+		},
+		{
+			"path" : "libGlistEngine.pdb"
+		}
+	],
+	"backtrace" : 3,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"include",
+			"target_link_libraries",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"C:/dev/glist/glistengine/engine/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 26,
+				"parent" : 0
+			},
+			{
+				"file" : 0,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 148,
+				"parent" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 417,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 213,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 35,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"define" : "GlistEngine_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/stb/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/fmod/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/utf8/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/ghc/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/utils"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/types"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/media"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/graphics"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/graphics/primitives"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/base"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/core"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/freetype2"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/ffmpeg"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/sqlite"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "C:/dev/glist/myglistapps/glistapp/GlistApp"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "C:/dev/glist/myglistapps/glistapp/PRIVATE"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "C:/dev/glist/myglistapps/glistapp/src"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -march=x86-64"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"define" : "GlistEngine_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/stb/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/fmod/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/utf8/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/ghc/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/utils"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/types"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/media"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/graphics"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/graphics/primitives"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/base"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/core"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/freetype2"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/ffmpeg"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/sqlite"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "C:/dev/glist/myglistapps/glistapp/GlistApp"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "C:/dev/glist/myglistapps/glistapp/PRIVATE"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "C:/dev/glist/myglistapps/glistapp/src"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42
+			]
+		}
+	],
+	"id" : "GlistEngine::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-v -pthread -Wl,--no-as-needed -Wl,--gc-sections -Wl,--unresolved-symbols=report-all",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lfmodL",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lfmod",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lassimp",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lfreetype",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lglfw3",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lopengl32",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lglew32",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-ldbghelp",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lmsvcr100",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lpsapi",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "GlistEngine",
+	"nameOnDisk" : "libGlistEngine.dll",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "C:/dev/glist/zbin/glistzbin-win64/mingw64/lib/sqlite3.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/types/gColor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/utils/gThread.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/utils/gUtils.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/utils/gFile.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gShader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/core/gObject.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/core/gRenderer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/core/gRenderObject.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gTexture.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gImage.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gSkybox.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gNode.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gLight.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gShadowMap.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gCamera.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gFont.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gMaterial.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gMesh.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gSkinnedMesh.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gModel.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/utils/gDatabase.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/utils/gAssetLoader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/primitives/gLine.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/primitives/gPlane.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/primitives/gBox.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/primitives/gSphere.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gVbo.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gFbo.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gRay.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gBoundingBox.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/graphics/gRect.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/core/gAppObject.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/base/gBasePlugin.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/media/gBaseSound.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/media/gFmodSound.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/base/gBaseApp.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/base/gBaseCanvas.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/core/gBaseWindow.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/core/gCanvasManager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/core/gAppManager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/core/backward.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "C:/dev/glist/glistengine/engine/core/gGLFWWindow.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

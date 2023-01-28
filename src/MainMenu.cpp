@@ -58,13 +58,16 @@ void MainMenu::initilaize() {
 	fontsizes.push_back(32 * globalscale);
 	fontsizes.push_back(18 * globalscale);
 	fontsizes.push_back(24 * globalscale);
+	fontsizes.push_back(48 * globalscale);
 
+	font.push_back(empty1);
 	font.push_back(empty1);
 	font.push_back(empty1);
 	font.push_back(empty1);
 	font[font_LOAD1].loadFont("FreeSans.ttf", fontsizes[font_LOAD1]);
 	font[font_LOAD2].loadFont("FreeSans.ttf", fontsizes[font_LOAD2]);
 	font[font_BUTTON].loadFont("FreeSans.ttf", fontsizes[font_BUTTON]);
+	font[font_TITLE].loadFont("FreeSans.ttf", fontsizes[font_TITLE]);
 
 	loadingtext.push_back("LOADING");
 	loadingtext.push_back("");
@@ -75,11 +78,11 @@ void MainMenu::updateLoad(int index) {
 	switch (index) {
 
 	case 0:
-		img_menu.loadImage("menu/mainmenubg.png");
+		img_menu.loadImage("menu/menu_0.png");
 		loadingtext[1] += "menu/mainmenubg.png";
 		break;
 	case 1:
-		img_dialogbox.loadImage("GUI/dialogbox2.png");
+		img_dialogbox.loadImage("GUI/dialogbox_2.png");
 		loadingtext[1] += "GUI/dialogbox.png";
 		break;
 	case 2:
@@ -131,7 +134,7 @@ void MainMenu::setInitialVariables() {
 	y_mainmenu = ((getHeight() - (img_menu.getHeight() * globalscale)) / 2) - getWidth()/50;	// center
 
 	x_btnmm2 = x_mainmenu + ((img_menu.getWidth() * globalscale) - (img_button[0].getWidth() * globalscale)) / 2;
-	x_btnmm = x_mainmenu + ((img_menu.getWidth() * globalscale) - (img_button[1].getWidth() * globalscale)) / 2;
+	x_btnmm  = x_mainmenu + ((img_menu.getWidth() * globalscale) - (img_button[1].getWidth() * globalscale)) / 2;
 	y_btnmm = y_mainmenu + (338 * globalscale);
 
 	statue1x = getWidth()/6 + 6;
@@ -153,6 +156,8 @@ void MainMenu::setInitialVariables() {
 	}
 
 	loadsaveanimation = false;
+	menuBrightness = 255;
+	bgBrightness = 128;
 }
 
 void MainMenu::drawLoad() {
@@ -178,13 +183,27 @@ void MainMenu::drawLoad() {
 
 void MainMenu::drawMenu() {
 // TODO:: BURADA KALDIN, GLOBAL SCALE DEÐERÝ OLUÞTUR, YENÝ DRAW METHODU YAZ BUNUNLA
-	setColor(128,128,128);
-	//img_blueprint.draw(0, 0, globalscale);
-	img_background.draw(-20, -20);
-	setColor(255,255,255);
-	//img_menu.draw(0, 0);
+	setColor(bgBrightness, bgBrightness, bgBrightness);
+    //img_blueprint.draw(0, 0, globalscale);
+    img_background.draw(-20, -20);
+    setColor(255,255,255);
+    font[font_TITLE].drawText(title, ((getWidth()-font[font_TITLE].getStringWidth(title))/2)+2, 52, 0, 0, 0);
+    font[font_TITLE].drawText(title, (getWidth()-font[font_TITLE].getStringWidth(title))/2, 50, 235, 180, 120);
+
+
+    font[font_LOAD2].drawText("Developers", font[font_LOAD2].getStringWidth("Developers"), getHeight()-80, 235, 180, 120);
+    font[font_LOAD2].drawText(creditsDEV, 62, getHeight()-48, 0, 0, 0);
+    font[font_LOAD2].drawText(creditsDEV, 60, getHeight()-50, 235, 180, 120);
+
+    font[font_LOAD2].drawText("Art", getWidth()-(font[font_LOAD2].getStringWidth("Art"))*5, getHeight()-80, 235, 180, 120);
+    font[font_LOAD2].drawText(creditsART, (getWidth()-font[font_LOAD2].getStringWidth(creditsART))-48, getHeight()-48, 0, 0, 0);
+    font[font_LOAD2].drawText(creditsART, getWidth()-font[font_LOAD2].getStringWidth(creditsART)-50, getHeight()-50, 235, 180, 120);
+
+
+    //img_menu.draw(0, 0);
 	img_statue.draw(statue1x, statuey, 0.1f);
 	img_statue.draw(statue2x, statuey, 0.1f);
+	setColor(menuBrightness, menuBrightness, menuBrightness, 255);
 	img_menu.draw(x_mainmenu, y_mainmenu, globalscale);
 	drawButtons();
 
@@ -220,6 +239,7 @@ void MainMenu::drawButton(std::string btntext, int btnx, int btny, int btntype, 
 
 void MainMenu::drawButtons() {
 	for(int i = 0; i < buttons.size(); i++) {
+		setColor(menuBrightness, menuBrightness, menuBrightness, 255);
 		drawButton(buttonTexts[i], buttons[i][0], buttons[i][1], buttons[i][2], buttons[i][3], buttons[i][4], buttons[i][5], buttons[i][6]);
 	}
 }
@@ -229,8 +249,12 @@ void MainMenu::listenButtons() {
 		if(buttonPressed == 0) {
 			gLogi("[Play Game] pressed");
 			GameCanvas *cnv = new GameCanvas(root);
-			cnv->initilaize();
+			gLogi("[GameCanvas *cnv] is created");
+			//cnv->initilaize();
+
+			gLogi("[GameCanvas->initilaize()] Success");
 			gLogi("test | before setting new canvas");
+			cnv->initilaize();
 			root->setCurrentCanvas(cnv); //bu canvas degistirme olayini switch'te yapinca hata verdi.
 		} else {
 			switch (buttonPressed) {
@@ -258,8 +282,11 @@ void MainMenu::savesMenu() {
 	//MENU ANIMATION
 	if(loadsaveanimation == true) { // OPENING ANIMATION OF "LOAD SAVES" MENU
 		if( x_mainmenu > getWidth()/20 ) {
+			menuBrightness -= 4;
+			bgBrightness -= 1;
 			x_mainmenu -= 12; // recalculate menu's x value
-			statue1x += 21;
+			statue1x -= 15;
+			statue2x += 15;
 			// Recalculate buttons' x values
 			x_btnmm2 = x_mainmenu + ((img_menu.getWidth() * globalscale) - (img_button[0].getWidth() * globalscale)) / 2;
 			x_btnmm = x_mainmenu + ((img_menu.getWidth() * globalscale) - (img_button[1].getWidth() * globalscale)) / 2;
@@ -271,8 +298,11 @@ void MainMenu::savesMenu() {
 		}
 	} else { // CLOSING ANIMATION OF "LOAD SAVES" MENU
 		if(x_mainmenu < (getWidth() - (img_menu.getWidth() * globalscale)) / 2) {
+			menuBrightness += 4;
+			bgBrightness += 1;
 			x_mainmenu += 12; // recalculate menu's x value
-			statue1x -= 21;
+			statue1x += 15;
+			statue2x -= 15;
 			// Recalculate buttons' x values
 			x_btnmm2 = x_mainmenu + ((img_menu.getWidth() * globalscale) - (img_button[0].getWidth() * globalscale)) / 2;
 			x_btnmm = x_mainmenu + ((img_menu.getWidth() * globalscale) - (img_button[1].getWidth() * globalscale)) / 2;

@@ -1,0 +1,7 @@
+[12.01.2023 05:51:51] layer "Game/Props/tg_Wall.png": Duplicate path: Game\Props\tg_Wall.png
+[12.01.2023 05:51:51] layer "Game/Props/tg_Wall.png": Duplicate path: Game\Props\tg_Wall.png
+[12.01.2023 05:51:51] layer "Game/Props/tg_Wall.png": Duplicate path: Game\Props\tg_Wall.png
+[12.01.2023 05:51:51] layer "Game/Props/tg_Wall.png": Duplicate path: Game\Props\tg_Wall.png
+[12.01.2023 05:51:51] layer "Game/Props/tg_Wall.png": Duplicate path: Game\Props\tg_Wall.png
+[12.01.2023 05:51:51] layer "Game/Props/tg_Wall.png": Duplicate path: Game\Props\tg_Wall.png
+[12.01.2023 05:51:51] layer "Game/Props/tg_Wall.png": Duplicate path: Game\Props\tg_Wall.png

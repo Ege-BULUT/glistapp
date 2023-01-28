@@ -1,0 +1,5 @@
+[INFO]  * * * * * * :
+[INFO]  * CreateMenu -> MenuX : 617 | BtnX : 733:
+[INFO]  * BtnX = MENU_X + (menu_image.getWidth() * globalscale - img_button.getWidth*globalscale) / 2 :
+[INFO]  * BtnX(733) = 617+ (438 * 0.833333)(365) - (158 * 0.833333)(131.667) / 2:
+

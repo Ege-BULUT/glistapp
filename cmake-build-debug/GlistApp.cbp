@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="GlistApp"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\glistengine\;CMake Files\..\..\glistengine\engine\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/dev/glist/myglistapps/glistapp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="GlistEngine">
+				<Option output="C:/dev/glist/myglistapps/glistapp/cmake-build-debug/libGlistEngine.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/dev/glist/myglistapps/glistapp/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/stb/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/fmod/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/utf8/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/ghc/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/utils"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/types"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/media"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/graphics"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/graphics/primitives"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/base"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/core"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/freetype2"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/ffmpeg"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/sqlite"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/GlistApp"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/PRIVATE"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/src"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 GlistEngine"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="GlistEngine/fast">
+				<Option output="C:/dev/glist/myglistapps/glistapp/cmake-build-debug/libGlistEngine.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/dev/glist/myglistapps/glistapp/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/stb/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/fmod/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/utf8/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/ghc/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/utils"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/types"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/media"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/graphics"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/graphics/primitives"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/base"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/core"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/freetype2"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/ffmpeg"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/sqlite"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/GlistApp"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/PRIVATE"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/src"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 GlistEngine/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="GlistApp">
+				<Option output="C:/dev/glist/myglistapps/glistapp/cmake-build-debug/GlistApp.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/dev/glist/myglistapps/glistapp/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/stb/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/fmod/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/utf8/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/ghc/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/utils"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/types"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/media"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/graphics"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/graphics/primitives"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/base"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/core"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/freetype2"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/ffmpeg"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/sqlite"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/GlistApp"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/PRIVATE"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/src"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 GlistApp"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="GlistApp/fast">
+				<Option output="C:/dev/glist/myglistapps/glistapp/cmake-build-debug/GlistApp.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/dev/glist/myglistapps/glistapp/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/stb/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/fmod/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/utf8/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/libs/ghc/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/utils"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/types"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/media"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/graphics"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/graphics/primitives"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/base"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/core"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/freetype2"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/ffmpeg"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/../../zbin/glistzbin-win64/mingw64/include/sqlite"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/GlistApp"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/PRIVATE"/>
+					<Add directory="C:/dev/glist/myglistapps/glistapp/src"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 GlistApp/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/dev/glist/myglistapps/glistapp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/dev/glist/myglistapps/glistapp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/dev/glist/myglistapps/glistapp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/dev/glist/glistengine/engine/base/gBaseApp.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/base/gBaseApp.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/base/gBaseCanvas.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/base/gBaseCanvas.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/base/gBasePlugin.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/base/gBasePlugin.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/backward.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/backward.hpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gAppManager.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gAppManager.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gAppObject.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gAppObject.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gBaseWindow.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gBaseWindow.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gCanvasManager.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gCanvasManager.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gGLFWWindow.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gGLFWWindow.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gObject.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gObject.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gRenderObject.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gRenderObject.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gRenderer.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/core/gRenderer.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gBoundingBox.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gBoundingBox.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gCamera.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gCamera.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gFbo.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gFbo.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gFont.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gFont.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gImage.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gImage.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gLight.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gLight.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gMaterial.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gMaterial.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gMesh.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gMesh.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gModel.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gModel.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gNode.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gNode.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gRay.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gRay.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gRect.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gRect.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gShader.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gShader.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gShadowMap.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gShadowMap.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gSkinnedMesh.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gSkinnedMesh.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gSkybox.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gSkybox.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gTexture.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gTexture.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gVbo.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/gVbo.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/primitives/gBox.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/primitives/gBox.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/primitives/gLine.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/primitives/gLine.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/primitives/gPlane.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/primitives/gPlane.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/primitives/gSphere.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/graphics/primitives/gSphere.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/media/gBaseSound.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/media/gBaseSound.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/media/gFmodSound.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/media/gFmodSound.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/types/gColor.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/types/gColor.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/utils/gAssetLoader.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/utils/gAssetLoader.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/utils/gDatabase.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/utils/gDatabase.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/utils/gFile.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/utils/gFile.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/utils/gThread.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/utils/gThread.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/utils/gUtils.cpp">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/glistengine/engine/utils/gUtils.h">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/myglistapps/glistapp/src/GameCanvas.cpp">
+			<Option target="GlistApp"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/myglistapps/glistapp/src/GameCanvas.h">
+			<Option target="GlistApp"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/myglistapps/glistapp/src/MainMenu.cpp">
+			<Option target="GlistApp"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/myglistapps/glistapp/src/MainMenu.h">
+			<Option target="GlistApp"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/myglistapps/glistapp/src/gApp.cpp">
+			<Option target="GlistApp"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/myglistapps/glistapp/src/gApp.h">
+			<Option target="GlistApp"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/myglistapps/glistapp/src/main.cpp">
+			<Option target="GlistApp"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/zbin/glistzbin-win64/mingw64/lib/sqlite3.c">
+			<Option target="GlistEngine"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/myglistapps/glistapp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/dev/glist/myglistapps/glistapp/../../glistengine/engine/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\..\..\glistengine\engine\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
